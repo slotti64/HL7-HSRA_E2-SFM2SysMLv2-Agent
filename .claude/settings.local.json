@@ -1,0 +1,11 @@
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "markitdown"
+  ],
+  "permissions": {
+    "allow": [
+      "Bash(python:*)"
+    ]
+  }
+}
