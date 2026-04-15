@@ -16,6 +16,7 @@ package CIM_IS {
              * =================================================================== */
 
             requirement <'CR-001'> 'ISO 21090 data type compliance' {
+                attribute regulatorySource : String = "ISO 21090:2011";
                 doc /* The system should use ISO 21090 Health Informatics -- Harmonized
                      * data types for information interchange as the basis for attribute
                      * data types in all identity information structures.
@@ -30,6 +31,7 @@ package CIM_IS {
              * =================================================================== */
 
             requirement <'CR-002'> 'authentication precondition on all operations' {
+                attribute regulatorySource : String = "Organizational security policy (delegated per ST-171)";
                 doc /* The system shall enforce the precondition that the Service
                      * Consumer is appropriately authenticated before any identity
                      * management or query operation is executed, delegating the
@@ -44,6 +46,7 @@ package CIM_IS {
             }
 
             requirement <'CR-003'> 'authorization enforcement for operations' {
+                attribute regulatorySource : String = "Organizational authorization policy (delegated per ST-067, ST-171)";
                 doc /* The system shall enforce authorization controls ensuring that
                      * each Service Consumer may only perform operations for which
                      * they have been granted authority, as defined by the
@@ -56,6 +59,7 @@ package CIM_IS {
             }
 
             requirement <'CR-004'> 'restrict identity resolution privileges' {
+                attribute regulatorySource : String = "Organizational role-based access policy (per ST-067)";
                 doc /* The system shall restrict the merge, unmerge, link, and unlink
                      * operations to Service Consumers who have been granted the
                      * identity resolution authority, as defined by organizational
@@ -66,6 +70,7 @@ package CIM_IS {
             }
 
             requirement <'CR-005'> 'restrict removal privileges' {
+                attribute regulatorySource : String = "Organizational access control policy (per ST-139)";
                 doc /* The system shall restrict the remove identity operation to
                      * Service Consumers who have been granted specified removal
                      * privileges, as defined by organizational policy.
@@ -79,6 +84,7 @@ package CIM_IS {
              * =================================================================== */
 
             requirement <'CR-006'> 'audit trail for removed records' {
+                attribute regulatorySource : String = "Organizational data retention and audit policy (per ST-194)";
                 doc /* The system shall comply with organizational data retention
                      * policies by preserving audit trail information for removed
                      * identity instances in a manner separate from the active
@@ -95,6 +101,7 @@ package CIM_IS {
              * =================================================================== */
 
             requirement <'CR-007'> 'policy domain ownership enforcement' {
+                attribute regulatorySource : String = "Organizational governance policy (per ST-030, ST-180)";
                 doc /* The system shall enforce that each PolicyDomain has a
                      * designated owner who defines the identity policies, supported
                      * EntityTypes, and authority attributes within that PolicyDomain.
@@ -108,6 +115,7 @@ package CIM_IS {
              * =================================================================== */
 
             requirement <'CR-008'> 'conformance through profiles' {
+                attribute regulatorySource : String = "HL7 conformance framework (per ST-039, ST-040)";
                 doc /* The system shall declare its level of conformance to this
                      * specification through a profile that identifies the
                      * PolicyDomains, EntityTypes, and operations supported by
@@ -124,6 +132,7 @@ package CIM_IS {
              * =================================================================== */
 
             requirement <'CR-009'> 'normative section compliance' {
+                attribute regulatorySource : String = "HL7 IS SFM Section 4 (per ST-203)";
                 doc /* The system shall comply with all normative requirements
                      * defined in SFM Section 4 (Detailed Functional Model), which
                      * constitutes the authoritative service contract defining
@@ -133,6 +142,7 @@ package CIM_IS {
             }
 
             requirement <'CR-010'> 'entity type assignment constraints' {
+                attribute regulatorySource : String = "HL7 IS SFM meta-model rules (per ST-074, ST-075)";
                 doc /* The system shall enforce that EntityTypeAssignment constraints
                      * applied within a PolicyDomain may only further restrict, and
                      * shall not relax, the schema and validation rules defined for

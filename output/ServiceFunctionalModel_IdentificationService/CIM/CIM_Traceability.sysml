@@ -1,5 +1,4 @@
 package CIM_IS {
-    private import RequirementDerivation::*;
 
     package CIM_Traceability {
         doc /* CIM-level Traceability for the HL7 Identification Service (IS).
