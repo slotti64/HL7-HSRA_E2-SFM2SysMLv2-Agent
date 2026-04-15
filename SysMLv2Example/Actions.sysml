@@ -1,6 +1,6 @@
 package Actions {
     package 'Drone Model' {
-        private import ScalarValues::**;
+        
         part 'drone in any mission' {
             part drone {
                 perform 'run mission'.proceed;
