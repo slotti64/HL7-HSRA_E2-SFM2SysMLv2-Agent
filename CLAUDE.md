@@ -64,6 +64,45 @@ ServiceFuctionalModel_<ServiceName>/
 │
 └── TransformationLog            — Decisions, assumptions, open issues
 
+## PSM Pipeline (FHIR R5)
+
+After the SFM→SysML transformation completes, run the PSM pipeline to map
+the PIM onto FHIR R5 resources and produce native FHIR artifacts.
+
+### PSM Variable Definitions
+
+| Variable | Description | Example |
+|---|---|---|
+| `{PIM_PATH}` | Path to PIM package directory | `output/ServiceFunctionalModel_{ServiceName}/PIM` |
+| `{PSM_OUT}` | PSM output directory | `output/ServiceFunctionalModel_{ServiceName}/PSM` |
+| `{FHIR_VERSION}` | FHIR version target | `R5` |
+
+### PSM Execution
+
+1. Verify PIM output exists at `{PIM_PATH}/` with all six PIM packages.
+2. Invoke `psm_orchestrator` with `{ServiceName}`, `{PIM_PATH}`, `{PSM_OUT}`, `{FHIR_VERSION}`.
+3. PSM SysML packages are written to `{PSM_OUT}/SysML/`.
+4. FHIR JSON artifacts are written to `{PSM_OUT}/FHIR/`.
+5. Conformance report is written to `{PSM_OUT}/PSM_ConformanceReport.md`.
+
+### PSM Output Specification
+
+```
+PSM_{ServiceName}/
+├── SysML/
+│   ├── ResourceModel.sysml          — FHIR resources as item def specializations
+│   ├── ProfileDefinitions.sysml     — Constraints, extensions, must-support
+│   ├── APIContracts.sysml           — REST interactions + $operations as action defs
+│   ├── WorkflowPatterns.sysml       — Task/Subscription/Bundle flows
+│   └── PSM_Traceability.sysml       — PIM→PSM traceability links
+└── FHIR/
+    ├── StructureDefinitions/         — Per-resource and extension profile JSON
+    ├── OperationDefinitions/         — Per-$operation JSON
+    ├── SearchParameters/             — Per-parameter JSON
+    ├── SubscriptionTopics/           — R5 subscription topic JSON
+    └── CapabilityStatement.json      — Full service capability declaration
+```
+
 ## Sub-Agent Invocation
 
 Use Claude Code's subagent capability to spawn each sub-agent
