@@ -25,6 +25,7 @@ Inspect all four SysML PSM packages and identify:
 
 2. **Missing cross-references**: Does any `action def` in `APIContracts.sysml` or `WorkflowPatterns.sysml` reference a FHIR resource type that has no corresponding `item def` in `ResourceModel.sysml`?
    - Resolution: Flag as UNMAPPED in reconciliation report; route to SB1-D for correction via orchestrator
+   - Exemption: Types declared in `FHIR_R5_Base` are NOT subject to this check. Exempt types: `Bundle`, `Task`, `Parameters`, `OperationOutcome`, `Subscription`, `SubscriptionTopic`, and all `FHIR*` datatype names (`FHIRIdentifier`, `FHIRReference`, `FHIRCodeableConcept`, etc.). Only types that should have a profile in `ResourceModel.sysml` are checked.
 
 3. **Inconsistent profile URLs**: Does any workflow or API contract reference a profile URL that differs from what `ProfileDefinitions.sysml` declares?
    - Resolution: Standardize all URLs to the ProfileDefinitions canonical URL

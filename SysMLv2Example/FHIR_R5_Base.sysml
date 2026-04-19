@@ -155,11 +155,16 @@ package FHIR_R5_Base {
         attribute partOf : FHIRReference;
     }
 
+    item def LinkageItem {
+        attribute type : String;           // source | alternate | historical
+        attribute resource : FHIRReference;
+    }
+
     item def Linkage :> FHIRResource {
         doc /* Explicit linking relationship between resource instances across systems */
         attribute active : Boolean;
         attribute author : FHIRReference;
-        // item[0..*]: each with type (source|alternate|historical) + resource FHIRReference
+        attribute item[0..*] : LinkageItem;
     }
 
     item def Basic :> FHIRResource {

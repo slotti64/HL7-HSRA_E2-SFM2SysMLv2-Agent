@@ -55,6 +55,7 @@ For every attribute typed as `FHIRCodeableConcept` in any profile:
 
 ```sysml
 package PSM_{ServiceName}_ProfileDefinitions {
+    import FHIR_R5_Base::*;
 
     // Extension definitions (one per FHIRExtension flag from ResourceModel)
     item def Ext{AttributeName} :> FHIR_R5_Base::FHIRExtension {
@@ -68,7 +69,7 @@ package PSM_{ServiceName}_ProfileDefinitions {
     item def {ServiceName}{ConceptName}Profile
             :> PSM_{ServiceName}_ResourceModel::FHIR{ConceptName} {
         doc /* FHIR R5 StructureDefinition profile
-             Profile URL: http://example.org/fhir/StructureDefinition/{ServiceName}{ConceptName}
+             Profile URL: http://example.org/fhir/StructureDefinition/{ServiceName}-{ConceptName}
              Base: http://hl7.org/fhir/StructureDefinition/{BaseResourceType} */
 
         attribute {attr}[{min}..{max}] : {Type}; // MS  ← add // MS if must-support

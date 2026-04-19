@@ -78,6 +78,17 @@ package PSM_{ServiceName}_WorkflowPatterns {
         metadata fhirResource { value "SubscriptionTopic"; }
     }
 
+    // Async $operation + Task polling workflow (for long-running flows)
+    action def {FlowName}AsyncWorkflow {
+        doc /* Maps PIM::BehavioralFlows::{PIMFlowName}
+             FHIR Pattern: Asynchronous $operation with Task polling */
+        in item trigger : Parameters;
+        out item taskRef : Task;
+        action invoke : PSM_{ServiceName}_APIContracts::{OperationName};
+        action poll : PSM_{ServiceName}_APIContracts::{PollingAction};
+        ref first invoke then poll;
+    }
+
     /* CapabilityStatement Summary
        resourceType: CapabilityStatement
        status: draft
@@ -105,6 +116,7 @@ package PSM_{ServiceName}_WorkflowPatterns {
 Before producing output:
 
 - [ ] Every PIM behavioral flow has a corresponding workflow `action def`
+- [ ] Every long-running or asynchronous PIM behavioral flow uses the AsyncWorkflow template
 - [ ] Every event-triggered flow has a `SubscriptionTopic` item def
 - [ ] CapabilityStatement Summary covers every distinct `fhirResource` value in APIContracts
 - [ ] Workflow sub-actions reference valid action names from `PSM_{ServiceName}_APIContracts`

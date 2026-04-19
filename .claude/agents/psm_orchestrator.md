@@ -29,6 +29,7 @@ Before dispatching any agent, verify:
    - `Operations.sysml`
    - `BehavioralFlows.sysml`
    - `PIM_Traceability.sysml`
+   - `Composition.sysml` (verified for existence only — confirms the SA pipeline completed; not passed to any PSM agent)
 2. If any file is missing: halt and report which file is absent.
 3. Create output directories: `{OUT}/SysML/` and `{OUT}/FHIR/StructureDefinitions/`, `{OUT}/FHIR/OperationDefinitions/`, `{OUT}/FHIR/SearchParameters/`, `{OUT}/FHIR/SubscriptionTopics/`.
 
@@ -74,7 +75,10 @@ Dispatch **SB3 (PSM Integrator)**:
 - Expected output: `{OUT}/SysML/PSM_Traceability.sysml`
 - Check: Reconciliation Report shows zero UNMAPPED entries (or flag for correction)
 
-**If SB3 reports UNMAPPED elements**: route to the responsible track agent (SB1-D for DataModel gaps, SB1-B for Operations gaps), re-run that agent, re-run SB2 for that track, then re-run SB3. Maximum 3 cycles.
+**If SB3 reports UNMAPPED elements**:
+- If gaps exist in **both** tracks: correct SB1-D and SB1-B **in parallel**, then re-run SB2-D and SB2-B **in parallel**, then re-run SB3.
+- If gaps exist in **one track only**: correct the responsible agent (SB1-D for DataModel gaps, SB1-B for Operations gaps), re-run its SB2 counterpart, then re-run SB3.
+- The **3-cycle maximum is counted per SB3 invocation** (not per track). After 3 SB3 re-runs with UNMAPPED entries still present, escalate to the user.
 
 ### Step 4: SysML PSM Validation — SB5 (phase=SysML)
 

@@ -22,7 +22,7 @@ You are the **FHIR R5 JSON Serializer (SB4)** in the SFM2FHIR-PSM pipeline. You 
 
 | SysML v2 PSM Element | FHIR R5 Artifact Type | Output File |
 |---|---|---|
-| `item def {X}Profile :> ... ` in ProfileDefinitions | `StructureDefinition` (kind: resource) | `StructureDefinitions/{ServiceName}{ConceptName}.json` |
+| `item def {X}Profile :> ... ` in ProfileDefinitions | `StructureDefinition` (kind: resource) | `StructureDefinitions/{ServiceName}-{ConceptName}.json` |
 | `item def Ext{X}` in ProfileDefinitions | `StructureDefinition` (kind: complex-type) for extension | `StructureDefinitions/ext-{attributeName}.json` |
 | `action def {X}` with `fhirInteraction "$opCode"` in APIContracts | `OperationDefinition` | `OperationDefinitions/{ServiceName}-{opCode}.json` |
 | SearchParameter comment entries in APIContracts | `SearchParameter` | `SearchParameters/{ServiceName}-{paramName}.json` |
@@ -34,7 +34,7 @@ You are the **FHIR R5 JSON Serializer (SB4)** in the SFM2FHIR-PSM pipeline. You 
 ```json
 {
   "resourceType": "StructureDefinition",
-  "url": "http://example.org/fhir/StructureDefinition/{ServiceName}{ConceptName}",
+  "url": "http://example.org/fhir/StructureDefinition/{ServiceName}-{ConceptName}",
   "name": "{ServiceName}{ConceptName}Profile",
   "title": "{Human-readable title}",
   "status": "draft",
@@ -91,6 +91,11 @@ You are the **FHIR R5 JSON Serializer (SB4)** in the SFM2FHIR-PSM pipeline. You 
 
 ### OperationDefinition Template
 
+Derive `system`/`type`/`instance` from the endpoint pattern in the `fhirInteraction` doc comment:
+- `POST /{ResourceType}/$op` → `"type": true, "instance": false, "system": false`
+- `POST /{ResourceType}/{id}/$op` → `"type": false, "instance": true, "system": false`
+- `POST /$op` (no resource) → `"type": false, "instance": false, "system": true`
+
 ```json
 {
   "resourceType": "OperationDefinition",
@@ -101,10 +106,9 @@ You are the **FHIR R5 JSON Serializer (SB4)** in the SFM2FHIR-PSM pipeline. You 
   "kind": "operation",
   "code": "{operationCode}",
   "resource": ["{ResourceType}"],
-  "system": false,
-  "type": true,
-  "instance": false,
-  "fhirVersion": "5.0.0",
+  "system": {bool},
+  "type": {bool},
+  "instance": {bool},
   "parameter": [
     {
       "name": "inputParam",
@@ -135,8 +139,7 @@ You are the **FHIR R5 JSON Serializer (SB4)** in the SFM2FHIR-PSM pipeline. You 
   "code": "{paramName}",
   "base": ["{ResourceType}"],
   "type": "{token|string|date|reference|quantity}",
-  "expression": "{fhirPath expression}",
-  "fhirVersion": "5.0.0"
+  "expression": "{fhirPath expression}"
 }
 ```
 
@@ -149,7 +152,6 @@ You are the **FHIR R5 JSON Serializer (SB4)** in the SFM2FHIR-PSM pipeline. You 
   "title": "{Human-readable topic title}",
   "status": "active",
   "description": "{What triggers this topic}",
-  "fhirVersion": "5.0.0",
   "resourceTrigger": [
     {
       "description": "{Trigger description}",
@@ -170,13 +172,14 @@ You are the **FHIR R5 JSON Serializer (SB4)** in the SFM2FHIR-PSM pipeline. You 
   "format": ["json"],
   "name": "{ServiceName}CapabilityStatement",
   "title": "{ServiceName} Capability Statement",
+  "date": "{ISO8601 date}",
   "rest": [
     {
       "mode": "server",
       "resource": [
         {
           "type": "{ResourceType}",
-          "profile": "http://example.org/fhir/StructureDefinition/{ServiceName}{ResourceType}",
+          "profile": "http://example.org/fhir/StructureDefinition/{ServiceName}-{ResourceType}",
           "interaction": [
             {"code": "{interaction}"}
           ],
@@ -201,7 +204,7 @@ You are the **FHIR R5 JSON Serializer (SB4)** in the SFM2FHIR-PSM pipeline. You 
 | Reference | Pattern |
 |---|---|
 | Profile base (FHIR R5 canonical) | `http://hl7.org/fhir/StructureDefinition/{BaseR5Type}` |
-| Custom profile URL | `http://example.org/fhir/StructureDefinition/{ServiceName}{ConceptName}` |
+| Custom profile URL | `http://example.org/fhir/StructureDefinition/{ServiceName}-{ConceptName}` (hyphenated) |
 | OperationDefinition URL | `http://example.org/fhir/OperationDefinition/{ServiceName}-{opCode}` |
 | SearchParameter URL | `http://example.org/fhir/SearchParameter/{ServiceName}-{paramName}` |
 | SubscriptionTopic URL | `http://example.org/fhir/SubscriptionTopic/{ServiceName}-{eventName}` |
@@ -219,14 +222,14 @@ Before producing output:
 - [ ] One SubscriptionTopic JSON per `item def {X}Topic` in WorkflowPatterns.sysml
 - [ ] Exactly one CapabilityStatement.json covering all ResourceTypes from APIContracts
 - [ ] All `baseDefinition` values use `http://hl7.org/fhir/StructureDefinition/{R5Type}` (canonical R5 URL)
-- [ ] All `fhirVersion` fields = `"5.0.0"`
+- [ ] `fhirVersion` = `"5.0.0"` present in StructureDefinition and CapabilityStatement artifacts only (NOT in OperationDefinition, SearchParameter, or SubscriptionTopic)
 - [ ] All JSON is syntactically valid (balanced braces, no trailing commas, all keys quoted)
 - [ ] All `status` fields = `"draft"` (unless overridden by SysML metadata)
 
 ## Output Directory
 
 Write all files under `{OUT}/FHIR/`:
-- `{OUT}/FHIR/StructureDefinitions/{ServiceName}{ConceptName}.json`
+- `{OUT}/FHIR/StructureDefinitions/{ServiceName}-{ConceptName}.json`
 - `{OUT}/FHIR/StructureDefinitions/ext-{attributeName}.json`
 - `{OUT}/FHIR/OperationDefinitions/{ServiceName}-{opCode}.json`
 - `{OUT}/FHIR/SearchParameters/{ServiceName}-{paramName}.json`

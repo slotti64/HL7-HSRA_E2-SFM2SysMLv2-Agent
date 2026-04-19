@@ -99,12 +99,13 @@ All FHIR JSON artifacts from `{OUT}/FHIR/` and cross-reference with SysML PSM pa
 | FC-01 | One StructureDefinition JSON exists per profile in `ProfileDefinitions.sysml` | ERROR |
 | FC-02 | One OperationDefinition JSON exists per `$operation` `action def` in `APIContracts.sysml` | ERROR |
 | FC-03 | Exactly one `CapabilityStatement.json` exists for the service | ERROR |
+| FC-04 | One SearchParameter JSON exists per SearchParameter entry in the Search Parameters comment block of `APIContracts.sysml` | ERROR |
 
 **Version checks (FV):**
 
 | ID | Check | Severity |
 |---|---|---|
-| FV-01 | `fhirVersion` = `"5.0.0"` in all JSON artifacts | ERROR |
+| FV-01 | `fhirVersion` = `"5.0.0"` in StructureDefinition and CapabilityStatement artifacts only (OperationDefinition, SearchParameter, and SubscriptionTopic do not carry this field in R5) | ERROR |
 
 ### Phase 2 Output Format
 
@@ -122,7 +123,7 @@ Same structure as Phase 1 report. Append to `{OUT}/PSM_ConformanceReport.md`.
 | SC-03, MC-03 | SB2-B (Capability Builder) | 3 |
 | SC-04 | SB3 (Integrator) | 2 |
 | SY-01..SY-04 | Agent responsible for the failing package | 3 |
-| FS-01..FS-04, FC-01..FC-03, FV-01 | SB4 (JSON Serializer) | 3 |
+| FS-01..FS-04, FC-01..FC-04, FV-01 | SB4 (JSON Serializer) | 3 |
 
 ## Escalation Protocol
 

@@ -73,13 +73,14 @@ the PIM onto FHIR R5 resources and produce native FHIR artifacts.
 
 | Variable | Description | Example |
 |---|---|---|
+| `{ServiceName}` | Full service name (matches SFM→SysML variable) | `IdentificationService` |
 | `{PIM_PATH}` | Path to PIM package directory | `output/ServiceFunctionalModel_{ServiceName}/PIM` |
 | `{PSM_OUT}` | PSM output directory | `output/ServiceFunctionalModel_{ServiceName}/PSM` |
 | `{FHIR_VERSION}` | FHIR version target | `R5` |
 
 ### PSM Execution
 
-1. Verify PIM output exists at `{PIM_PATH}/` with all six PIM packages.
+1. Verify PIM output exists at `{PIM_PATH}/` with all six PIM packages (five are consumed by the PSM pipeline; `Composition.sysml` is produced by SA5 but not passed to any PSM agent).
 2. Invoke `psm_orchestrator` with `{ServiceName}`, `{PIM_PATH}`, `{PSM_OUT}`, `{FHIR_VERSION}`.
 3. PSM SysML packages are written to `{PSM_OUT}/SysML/`.
 4. FHIR JSON artifacts are written to `{PSM_OUT}/FHIR/`.

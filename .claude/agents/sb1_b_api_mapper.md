@@ -101,9 +101,27 @@ package PSM_{ServiceName}_APIContracts {
        Mapped as FHIR interaction: {n}
        Mapped as $operation: {n}
        Skipped (notification delivery — handled by WorkflowPatterns): {n}
+
+       NOTIFICATION_DELIVERY_TRIGGERS (skipped action def names, for SB2-B cross-check):
+       - {PIMActionName1}
+       - {PIMActionName2}
+       (add one line per skipped notification delivery action def; leave empty if none)
     */
 }
 ```
+
+### Date/Time Attribute Annotation
+
+For attributes whose PIM type maps to a FHIR date/time primitive, annotate with an inline comment so SB4 can emit the correct `type.code` in StructureDefinition element entries:
+
+```sysml
+attribute {attr} : String; // fhir-type: date
+attribute {attr} : String; // fhir-type: dateTime
+attribute {attr} : String; // fhir-type: instant
+attribute {attr} : String; // fhir-type: time
+```
+
+Use `dateTime` for combined date+time attributes, `date` for date-only, `instant` for machine timestamps, `time` for time-of-day only.
 
 ## MagicDraw 2026x Compatibility Rules (inherited from pipeline)
 
@@ -120,6 +138,7 @@ Before producing output:
 - [ ] Every `search-type` interaction has at least one SearchParameter declared
 - [ ] All `$operation` actions use `POST` method
 - [ ] Response types are FHIR R5 resource types or `Bundle` (not PIM-specific types)
+- [ ] Every skipped notification delivery action def is listed by name in the NOTIFICATION_DELIVERY_TRIGGERS section
 - [ ] Package brackets balanced; no nested imports
 
 ## Output File
