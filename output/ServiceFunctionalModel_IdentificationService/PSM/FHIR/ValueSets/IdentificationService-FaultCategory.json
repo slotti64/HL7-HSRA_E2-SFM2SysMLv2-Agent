@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "id": "IdentificationService-FaultCategory",
+  "url": "http://example.org/fhir/ValueSet/IdentificationService-FaultCategory",
+  "name": "VS_IdentificationService_FaultCategory",
+  "title": "Identification Service — FaultCategory (required)",
+  "status": "active",
+  "compose": {
+    "include": [
+      {"system": "http://example.org/fhir/CodeSystem/IdentificationService-FaultCategory"}
+    ]
+  }
+}

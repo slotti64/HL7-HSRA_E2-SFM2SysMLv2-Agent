@@ -1,0 +1,487 @@
+{
+  "resourceType" : "OperationOutcome",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[0].profile</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-IdentityInstance)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[0].operation[0].definition</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/OperationDefinition/IdentificationService-Patient-merge)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[0].operation[1].definition</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/OperationDefinition/IdentificationService-Patient-unmerge)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[0].operation[2].definition</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/OperationDefinition/IdentificationService-Patient-match)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[0].operation[3].definition</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/OperationDefinition/IdentificationService-Patient-everything)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[1].profile</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-RealWorldEntity)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[2].profile</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-PolicyDomain)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[3].profile</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-IdentityLink)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[4].profile</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-NotificationSubscription)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[5].profile</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-IdentityUpdateTopic)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[6].supportedProfile[0]</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-EntityConcept)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[6].supportedProfile[1]</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-EntityType)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[6].supportedProfile[2]</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-EntityTypeAssignment)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[6].supportedProfile[3]</td><td>Invalid Content</td><td>Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-ServiceMetadata)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement</td><td>Validation rule failed</td><td>Constraint failed: cpb-2: 'A Capability Statement SHALL have at least one of description, software, or implementation element.' (defined in http://hl7.org/fhir/StructureDefinition/CapabilityStatement)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement</td><td>Validation rule failed</td><td>Constraint failed: cpb-14: 'If kind = instance, implementation must be present and software may be present' (defined in http://hl7.org/fhir/StructureDefinition/CapabilityStatement)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>CapabilityStatement.rest[0].resource[4].searchParam[0]</td><td>Invalid Content</td><td>Type mismatch - SearchParameter 'http://hl7.org/fhir/SearchParameter/Subscription-topic|5.0.0' type is uri, but type here is reference</td><td/><td>InstanceValidator</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+    "valueString" : "output\\ServiceFunctionalModel_IdentificationService\\PSM\\FHIR\\CapabilityStatement.json"
+  }],
+  "issue" : [{
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 19
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 106
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-IdentityInstance)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[0].profile"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 42
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 110
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/OperationDefinition/IdentificationService-Patient-merge)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[0].operation[0].definition"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 46
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 112
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/OperationDefinition/IdentificationService-Patient-unmerge)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[0].operation[1].definition"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 50
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 110
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/OperationDefinition/IdentificationService-Patient-match)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[0].operation[2].definition"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 54
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 115
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/OperationDefinition/IdentificationService-Patient-everything)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[0].operation[3].definition"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 60
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 105
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-RealWorldEntity)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[1].profile"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 68
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 102
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-PolicyDomain)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[2].profile"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 76
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 102
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-IdentityLink)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[3].profile"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 102
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 114
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-NotificationSubscription)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[4].profile"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 123
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 109
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-IdentityUpdateTopic)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[5].profile"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 132
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 94
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-EntityConcept)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[6].supportedProfile[0]"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 133
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 91
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-EntityType)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[6].supportedProfile[1]"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 134
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 101
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-EntityTypeAssignment)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[6].supportedProfile[2]"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 135
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 96
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "TYPE_SPECIFIC_CHECKS_DT_URL_EXAMPLE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Example URLs are not allowed in this context (http://example.org/fhir/StructureDefinition/IdentificationService-ServiceMetadata)"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[6].supportedProfile[3]"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 1
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 2
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement#cpb-2"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invariant",
+    "details" : {
+      "text" : "Constraint failed: cpb-2: 'A Capability Statement SHALL have at least one of description, software, or implementation element.' (defined in http://hl7.org/fhir/StructureDefinition/CapabilityStatement)"
+    },
+    "expression" : ["CapabilityStatement"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 1
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 2
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement#cpb-14"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invariant",
+    "details" : {
+      "text" : "Constraint failed: cpb-14: 'If kind = instance, implementation must be present and software may be present' (defined in http://hl7.org/fhir/StructureDefinition/CapabilityStatement)"
+    },
+    "expression" : ["CapabilityStatement"]
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 109
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+      "valueInteger" : 14
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+      "valueString" : "InstanceValidator"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueCode" : "CapabalityStatement_CS_SP_WrongType"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+      "valueString" : "http://hl7.org/fhir/StructureDefinition/CapabilityStatement|5.0.0"
+    }],
+    "severity" : "error",
+    "code" : "invalid",
+    "details" : {
+      "text" : "Type mismatch - SearchParameter 'http://hl7.org/fhir/SearchParameter/Subscription-topic|5.0.0' type is uri, but type here is reference"
+    },
+    "expression" : ["CapabilityStatement.rest[0].resource[4].searchParam[0]"]
+  }]
+}

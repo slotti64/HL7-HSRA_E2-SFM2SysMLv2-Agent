@@ -1,11 +1,26 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(xargs -I {} basename {})",
+      "Bash(xargs wc *)",
+      "Bash(git commit -m ' *)",
+      "Bash(java -version)",
+      "Bash(java -jar tools/validator_cli.jar -version)",
+      "Bash(java -jar tools/validator_cli.jar -version 5.0.0 -ig output/ServiceFunctionalModel_IdentificationService/PSM/FHIR -output output/ServiceFunctionalModel_IdentificationService/PSM/validator_report.json -recurse)",
+      "Bash(curl -sL -o /tmp/xver.tgz \"https://packages.fhir.org/hl7.fhir.xver-extensions/0.1.0\")",
+      "Read(//tmp/**)",
+      "Bash(mkdir -p \"C:/Users/slotti/.fhir/packages/hl7.fhir.xver-extensions#0.1.0\")",
+      "Bash(tar -xzf /tmp/xver.tgz)",
+      "Bash(tasklist //FI \"IMAGENAME eq java.exe\")",
+      "Bash(java *)",
+      "Bash(grep -oE 'valueString\" : \"output\\\\\\\\\\\\\\\\[^\"]+\\\\.json\"' output/ServiceFunctionalModel_IdentificationService/PSM/validator_report.json)",
+      "Bash(python3 *)",
+      "Bash(node *)"
+    ]
+  },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "markitdown"
-  ],
-  "permissions": {
-    "allow": [
-      "Bash(python:*)"
-    ]
-  }
+  ]
 }

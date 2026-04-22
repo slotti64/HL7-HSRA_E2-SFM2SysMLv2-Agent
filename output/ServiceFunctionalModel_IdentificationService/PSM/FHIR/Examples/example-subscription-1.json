@@ -1,0 +1,44 @@
+{
+  "resourceType": "Subscription",
+  "id": "example-subscription-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-NotificationSubscription"]
+  },
+  "status": "active",
+  "topic": "http://example.org/fhir/SubscriptionTopic/IdentificationService-IdentityUpdate",
+  "endpoint": "https://subscriber.example.com/fhir/hooks/identity-updates",
+  "contact": [
+    {
+      "system": "email",
+      "value": "ops@subscriber.example.org"
+    }
+  ],
+  "filterBy": [
+    {
+      "resourceType": "Patient",
+      "filterParameter": "organization",
+      "comparator": "eq",
+      "value": "Organization/example-policydomain-1"
+    }
+  ],
+  "channelType": {
+    "system": "http://terminology.hl7.org/CodeSystem/subscription-channel-type",
+    "code": "rest-hook"
+  },
+  "contentType": "application/fhir+json",
+  "content": "full-resource",
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-notificationQualifier",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-NotificationEventCategory",
+            "code": "property-change",
+            "display": "Property Change"
+          }
+        ]
+      }
+    }
+  ]
+}

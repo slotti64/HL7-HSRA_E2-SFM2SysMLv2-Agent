@@ -77,6 +77,19 @@ the PIM onto FHIR R5 resources and produce native FHIR artifacts.
 | `{PIM_PATH}` | Path to PIM package directory | `output/ServiceFunctionalModel_{ServiceName}/PIM` |
 | `{PSM_OUT}` | PSM output directory | `output/ServiceFunctionalModel_{ServiceName}/PSM` |
 | `{FHIR_VERSION}` | FHIR version target | `R5` |
+| `{FHIR_VALIDATOR_JAR}` | Path to the official HL7 FHIR Validator JAR used by SB5 FV-02 | `tools/validator_cli.jar` (default; override via `FHIR_VALIDATOR_JAR` env var) |
+
+### PSM Prerequisites
+
+In addition to the core prerequisites:
+1. A JDK 17+ `java` executable must be on `PATH` (for the FHIR Validator).
+2. The official HL7 FHIR Validator JAR must be available at `{FHIR_VALIDATOR_JAR}`. If absent, SB5 phase=FHIR FV-02 fails with `FV-02-MISSING-TOOLING` and the pipeline halts.
+   Install with:
+   ```
+   curl -L -o tools/validator_cli.jar https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar
+   ```
+   (Or download the pinned release that matches the target R5 revision used in the PSM.)
+3. An internet connection at validator-run time, unless the validator has been pre-warmed with the R5 package cache (`~/.fhir/packages/`).
 
 ### PSM Execution
 
@@ -93,16 +106,49 @@ PSM_{ServiceName}/
 ├── SysML/
 │   ├── ResourceModel.sysml          — FHIR resources as item def specializations
 │   ├── ProfileDefinitions.sysml     — Constraints, extensions, must-support
+│   ├── TerminologyManifest.sysml    — ValueSet / CodeSystem / NamingSystem closure
 │   ├── APIContracts.sysml           — REST interactions + $operations as action defs
 │   ├── WorkflowPatterns.sysml       — Task/Subscription/Bundle flows
 │   └── PSM_Traceability.sysml       — PIM→PSM traceability links
 └── FHIR/
     ├── StructureDefinitions/         — Per-resource and extension profile JSON
     ├── OperationDefinitions/         — Per-$operation JSON
-    ├── SearchParameters/             — Per-parameter JSON
+    ├── SearchParameters/             — Per-custom-parameter JSON (base params referenced by URL, not cloned)
     ├── SubscriptionTopics/           — R5 subscription topic JSON
-    └── CapabilityStatement.json      — Full service capability declaration
+    ├── ValueSets/                    — Per-ValueSet JSON
+    ├── CodeSystems/                  — Per-CodeSystem JSON
+    ├── NamingSystems/                — Per-NamingSystem JSON
+    ├── Examples/                     — One-or-more example instances per profile
+    ├── CapabilityStatement.json      — Full service capability declaration
+    ├── ImplementationGuide.json      — R5 IG resource enumerating every artifact (emitted by SB6-IG)
+    ├── package.json                  — NPM IG manifest for HL7 IG Publisher (emitted by SB6-IG)
+    └── ig.ini                        — IG Publisher configuration (emitted by SB6-IG)
 ```
+
+### PSM Pipeline Agents
+
+| Agent | Role |
+|---|---|
+| `psm_orchestrator` | Coordinates the seven PSM agents and enforces phase ordering |
+| `sb1_d_resource_mapper` | Data Track — maps PIM item defs to FHIR R5 base resources |
+| `sb2_d_profile_builder` | Data Track — emits StructureDefinitions, extensions, and TerminologyManifest |
+| `sb1_b_api_mapper` | Behavior Track — maps PIM action defs to FHIR REST interactions / `$operation`s |
+| `sb2_b_capability_builder` | Behavior Track — emits WorkflowPatterns + CapabilityStatement summary |
+| `sb3_psm_integrator` | Reconciles both tracks, builds PSM_Traceability, enforces MS coverage |
+| `sb4_fhir_json_serializer` | Serializes SysML PSM to FHIR R5 JSON (profiles, ops, VS/CS/NS, examples) |
+| `sb5_conformance_validator` | Two-phase validator (SysML + FHIR) — runs HL7 FHIR Validator for FV-02 |
+| `sb6_ig_packager` | Packages all FHIR R5 JSON into a publishable IG (ImplementationGuide + package.json + ig.ini) |
+
+### Publishing the IG
+
+After the PSM pipeline completes, the `{PSM_OUT}/FHIR/` directory is a valid IG Publisher input. To produce the HTML IG:
+
+```
+java -jar tools/publisher.jar -ig {PSM_OUT}/FHIR/ig.ini
+```
+
+(Install `publisher.jar` from https://github.com/HL7/fhir-ig-publisher/releases as needed. This is not required for PSM pipeline execution; SB6-IG only produces the NPM package inputs.)
+
 
 ## Sub-Agent Invocation
 

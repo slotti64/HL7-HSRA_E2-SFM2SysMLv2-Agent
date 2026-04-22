@@ -1,0 +1,150 @@
+{
+  "resourceType": "CapabilityStatement",
+  "id": "IdentificationService",
+  "url": "http://example.org/fhir/CapabilityStatement/IdentificationService",
+  "name": "IdentificationServiceCapabilityStatement",
+  "title": "HL7 Identification Service CapabilityStatement",
+  "status": "draft",
+  "date": "2026-04-22",
+  "kind": "instance",
+  "fhirVersion": "5.0.0",
+  "format": ["application/fhir+json", "application/fhir+xml"],
+  "description": "FHIR R5 Capability Statement for the HL7 Identification Service (IS), mapping the HSRA E2 IS SFM to FHIR resources including Patient, Person, Organization, Linkage, SubscriptionTopic, Subscription, and Basic-derived resources (EntityConcept, EntityType, EntityTypeAssignment, ServiceMetadata). Declares REST interactions, custom $merge/$unmerge operations, and standard Patient-match / Patient-everything inherited operations.",
+  "implementation": {
+    "description": "Reference implementation of the HL7 Identification Service",
+    "url": "https://example.com/fhir"
+  },
+  "rest": [
+    {
+      "mode": "server",
+      "documentation": "HL7 Identification Service FHIR R5 facade. Exposes Patient, Person, Organization, Linkage, Subscription, SubscriptionTopic and Basic-backed resources, plus custom $merge and $unmerge operations on Patient, and inherits the standard Patient-match and Patient-everything operations.",
+      "resource": [
+        {
+          "type": "Patient",
+          "profile": "http://example.org/fhir/StructureDefinition/IdentificationService-IdentityInstance",
+          "interaction": [
+            {"code": "create"},
+            {"code": "update"},
+            {"code": "delete"},
+            {"code": "read"},
+            {"code": "search-type"}
+          ],
+          "searchParam": [
+            {
+              "name": "identifier",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Patient-identifier"
+            },
+            {
+              "name": "organization",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Patient-organization"
+            }
+          ],
+          "operation": [
+            {
+              "name": "merge",
+              "definition": "http://example.org/fhir/OperationDefinition/IdentificationService-Patient-merge"
+            },
+            {
+              "name": "unmerge",
+              "definition": "http://example.org/fhir/OperationDefinition/IdentificationService-Patient-unmerge"
+            },
+            {
+              "name": "match",
+              "definition": "http://example.org/fhir/OperationDefinition/IdentificationService-Patient-match"
+            },
+            {
+              "name": "everything",
+              "definition": "http://example.org/fhir/OperationDefinition/IdentificationService-Patient-everything"
+            }
+          ]
+        },
+        {
+          "type": "Person",
+          "profile": "http://example.org/fhir/StructureDefinition/IdentificationService-RealWorldEntity",
+          "interaction": [
+            {"code": "read"},
+            {"code": "search-type"}
+          ]
+        },
+        {
+          "type": "Organization",
+          "profile": "http://example.org/fhir/StructureDefinition/IdentificationService-PolicyDomain",
+          "interaction": [
+            {"code": "read"},
+            {"code": "search-type"}
+          ]
+        },
+        {
+          "type": "Linkage",
+          "profile": "http://example.org/fhir/StructureDefinition/IdentificationService-IdentityLink",
+          "interaction": [
+            {"code": "create"},
+            {"code": "delete"},
+            {"code": "search-type"}
+          ],
+          "searchParam": [
+            {
+              "name": "item",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Linkage-item"
+            },
+            {
+              "name": "source",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Linkage-source"
+            },
+            {
+              "name": "author",
+              "type": "reference",
+              "definition": "http://hl7.org/fhir/SearchParameter/Linkage-author"
+            }
+          ]
+        },
+        {
+          "type": "Subscription",
+          "profile": "http://example.org/fhir/StructureDefinition/IdentificationService-NotificationSubscription",
+          "interaction": [
+            {"code": "create"},
+            {"code": "update"},
+            {"code": "read"}
+          ],
+          "searchParam": [
+            {
+              "name": "topic",
+              "type": "uri",
+              "definition": "http://hl7.org/fhir/SearchParameter/Subscription-topic"
+            },
+            {
+              "name": "status",
+              "type": "token",
+              "definition": "http://hl7.org/fhir/SearchParameter/Subscription-status"
+            }
+          ]
+        },
+        {
+          "type": "SubscriptionTopic",
+          "profile": "http://example.org/fhir/StructureDefinition/IdentificationService-IdentityUpdateTopic",
+          "interaction": [
+            {"code": "read"},
+            {"code": "search-type"}
+          ]
+        },
+        {
+          "type": "Basic",
+          "supportedProfile": [
+            "http://example.org/fhir/StructureDefinition/IdentificationService-EntityConcept",
+            "http://example.org/fhir/StructureDefinition/IdentificationService-EntityType",
+            "http://example.org/fhir/StructureDefinition/IdentificationService-EntityTypeAssignment",
+            "http://example.org/fhir/StructureDefinition/IdentificationService-ServiceMetadata"
+          ],
+          "interaction": [
+            {"code": "read"},
+            {"code": "search-type"}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "resourceType": "Person",
+  "id": "example-person-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-RealWorldEntity"]
+  },
+  "identifier": [
+    {
+      "system": "http://example.org/fhir/sid/IdentificationService/IdentityInstance",
+      "value": "RWE-000001"
+    }
+  ],
+  "active": true,
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-entityNature",
+      "valueCode": "person"
+    }
+  ],
+  "link": [
+    {
+      "target": {
+        "reference": "Patient/example-patient-1"
+      },
+      "assurance": "level3"
+    }
+  ]
+}

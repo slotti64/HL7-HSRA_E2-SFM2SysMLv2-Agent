@@ -1,1 +1,12 @@
 nul
+
+# External tooling drop-zone — large binaries, not version-controlled
+tools/*.jar
+tools/publisher.jar
+tools/validator_cli.jar
+
+# FHIR validator cache (populated first time validator runs)
+.fhir/
+
+# PSM run artifacts (regenerated on every run)
+**/PSM/validator_report.json

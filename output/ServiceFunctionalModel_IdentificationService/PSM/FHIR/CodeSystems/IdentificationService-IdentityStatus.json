@@ -1,0 +1,14 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-IdentityStatus",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-IdentityStatus",
+  "name": "CS_IdentificationService_IdentityStatus",
+  "title": "Identification Service — IdentityStatus",
+  "status": "active",
+  "content": "complete",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "active", "display": "Active", "definition": "Identity is active and discoverable."},
+    {"code": "inactive", "display": "Inactive", "definition": "Identity is retired, soft-deprecated, or otherwise no longer in active use."}
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-linkMethod",
+  "url": "http://example.org/fhir/StructureDefinition/ext-linkMethod",
+  "name": "ExtLinkMethod",
+  "title": "Link Method Extension",
+  "status": "draft",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [{"type": "element", "expression": "Linkage"}],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {"id": "Extension", "path": "Extension", "short": "How the link was established (manual | automated)"},
+      {"id": "Extension.url", "path": "Extension.url", "fixedUri": "http://example.org/fhir/StructureDefinition/ext-linkMethod"},
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [{"code": "CodeableConcept"}],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/IdentificationService-LinkMethodCategory"
+        }
+      }
+    ]
+  }
+}

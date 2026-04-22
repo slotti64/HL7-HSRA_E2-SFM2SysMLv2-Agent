@@ -1,0 +1,17 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-FaultCategory",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-FaultCategory",
+  "name": "CS_IdentificationService_FaultCategory",
+  "title": "Identification Service — FaultCategory",
+  "status": "active",
+  "content": "complete",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "validation", "display": "Validation", "definition": "Input validation failure."},
+    {"code": "authorization", "display": "Authorization", "definition": "Authorization failure."},
+    {"code": "not-found", "display": "Not Found", "definition": "Referenced resource not found."},
+    {"code": "business-rule-violation", "display": "Business Rule Violation", "definition": "Policy or business rule violation."},
+    {"code": "internal", "display": "Internal", "definition": "Internal server error."}
+  ]
+}

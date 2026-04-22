@@ -1,0 +1,73 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IdentificationService-NotificationSubscription",
+  "url": "http://example.org/fhir/StructureDefinition/IdentificationService-NotificationSubscription",
+  "name": "IdentificationServiceNotificationSubscriptionProfile",
+  "title": "Identification Service — NotificationSubscription (Subscription) Profile",
+  "status": "draft",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Subscription",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Subscription",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Subscription",
+        "path": "Subscription",
+        "short": "NotificationSubscription — a subscriber's request for identity-update notifications",
+        "definition": "Subscription-derived profile representing a subscriber's registration for identity-update notifications against the IdentityUpdateTopic. Constrains filter, endpoint, and qualifier semantics."
+      },
+      {
+        "id": "Subscription.extension:notificationQualifier",
+        "path": "Subscription.extension",
+        "sliceName": "notificationQualifier",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-notificationQualifier"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Subscription.status",
+        "path": "Subscription.status",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Subscription.topic",
+        "path": "Subscription.topic",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Subscription.contact",
+        "path": "Subscription.contact",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Subscription.filterBy",
+        "path": "Subscription.filterBy",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Subscription.endpoint",
+        "path": "Subscription.endpoint",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      }
+    ]
+  }
+}

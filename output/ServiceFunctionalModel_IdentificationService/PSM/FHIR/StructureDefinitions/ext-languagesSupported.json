@@ -1,0 +1,22 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-languagesSupported",
+  "url": "http://example.org/fhir/StructureDefinition/ext-languagesSupported",
+  "name": "ExtLanguagesSupported",
+  "title": "Languages Supported Extension",
+  "status": "draft",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [{"type": "element", "expression": "Organization"}],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {"id": "Extension", "path": "Extension", "short": "BCP-47 language code supported by the PolicyDomain"},
+      {"id": "Extension.url", "path": "Extension.url", "fixedUri": "http://example.org/fhir/StructureDefinition/ext-languagesSupported"},
+      {"id": "Extension.value[x]", "path": "Extension.value[x]", "min": 1, "max": "1", "type": [{"code": "code"}]}
+    ]
+  }
+}

@@ -18,6 +18,7 @@ Establish these variables at the start of every PSM transformation:
 | `{PIM_PATH}` | Path to PIM package directory (no trailing slash) | `output/ServiceFunctionalModel_IdentificationService/PIM` |
 | `{OUT}` | PSM output directory (no trailing slash) | `output/ServiceFunctionalModel_IdentificationService/PSM` |
 | `{FHIR_VERSION}` | FHIR version target | `R5` |
+| `{FHIR_VALIDATOR_JAR}` | Path to the HL7 FHIR Validator JAR used by SB5 FV-02 | value of env var `FHIR_VALIDATOR_JAR`, or default `tools/validator_cli.jar` |
 
 ## Pre-Flight Checks
 
@@ -31,7 +32,20 @@ Before dispatching any agent, verify:
    - `PIM_Traceability.sysml`
    - `Composition.sysml` (verified for existence only — confirms the SA pipeline completed; not passed to any PSM agent)
 2. If any file is missing: halt and report which file is absent.
-3. Create output directories: `{OUT}/SysML/` and `{OUT}/FHIR/StructureDefinitions/`, `{OUT}/FHIR/OperationDefinitions/`, `{OUT}/FHIR/SearchParameters/`, `{OUT}/FHIR/SubscriptionTopics/`.
+3. Resolve `{FHIR_VALIDATOR_JAR}` from environment variable `FHIR_VALIDATOR_JAR` (falling back to `tools/validator_cli.jar`). Verify the JAR file exists on disk. If it does not:
+   - Emit a clear warning to the user: "FHIR Validator JAR not found at {path}. SB5 FV-02 will fail with FV-02-MISSING-TOOLING."
+   - Do NOT abort pre-flight; continue dispatching. SB5 will block at phase=FHIR so upstream SysML work still produces artifacts.
+   - Surface installation instructions (see CLAUDE.md PSM Prerequisites section).
+4. Create output directories:
+   - `{OUT}/SysML/`
+   - `{OUT}/FHIR/StructureDefinitions/`
+   - `{OUT}/FHIR/OperationDefinitions/`
+   - `{OUT}/FHIR/SearchParameters/`
+   - `{OUT}/FHIR/SubscriptionTopics/`
+   - `{OUT}/FHIR/ValueSets/`
+   - `{OUT}/FHIR/CodeSystems/`
+   - `{OUT}/FHIR/NamingSystems/`
+   - `{OUT}/FHIR/Examples/`
 
 ## Execution Protocol
 
@@ -57,8 +71,8 @@ Dispatch both agents **simultaneously**:
 
 **SB2-D (Data Track — Profile Builder):**
 - Agent: `sb2_d_profile_builder`
-- Inputs to pass: contents of `{OUT}/SysML/ResourceModel.sysml`, `{PIM_PATH}/DataModel.sysml`, `{ServiceName}`, `{OUT}`
-- Expected output: `{OUT}/SysML/ProfileDefinitions.sysml`
+- Inputs to pass: contents of `{OUT}/SysML/ResourceModel.sysml`, `{PIM_PATH}/DataModel.sysml`, `{OUT}/SysML/APIContracts.sysml` (for MS cross-check against SearchParameter expressions), `{OUT}/SysML/WorkflowPatterns.sysml` if already produced (for canFilterBy MS cross-check — otherwise SB5 PC-01 will catch residual gaps), `{ServiceName}`, `{OUT}`
+- Expected outputs: `{OUT}/SysML/ProfileDefinitions.sysml` **and** `{OUT}/SysML/TerminologyManifest.sysml`
 
 **SB2-B (Behavior Track — Capability Builder):**
 - Agent: `sb2_b_capability_builder`
@@ -84,7 +98,7 @@ Dispatch **SB3 (PSM Integrator)**:
 
 Dispatch **SB5 (Conformance Validator, phase=SysML)**:
 - Agent: `sb5_conformance_validator`
-- Inputs to pass: all five SysML PSM packages, PIM source files for element counting, `{ServiceName}`, `{OUT}`, `phase=SysML`
+- Inputs to pass: all five SysML PSM packages **plus** `{OUT}/SysML/TerminologyManifest.sysml`, PIM source files for element counting, `{ServiceName}`, `{OUT}`, `phase=SysML`
 - Expected output: Phase 1 section of `{OUT}/PSM_ConformanceReport.md`
 
 **If SB5 reports ERROR findings**: route corrections per the SB5 correction routing table. Re-run the responsible agent, re-run SB3 if traceability is affected, re-run SB5. Maximum 3 correction cycles per check ID.
@@ -95,17 +109,28 @@ Dispatch **SB5 (Conformance Validator, phase=SysML)**:
 
 Dispatch **SB4 (FHIR JSON Serializer)**:
 - Agent: `sb4_fhir_json_serializer`
-- Inputs to pass: contents of all five SysML PSM packages, `{ServiceName}`, `{OUT}`
-- Expected output: all files under `{OUT}/FHIR/`
+- Inputs to pass: contents of all five SysML PSM packages, `{OUT}/SysML/TerminologyManifest.sysml`, `{PIM_PATH}/DataModel.sysml` (for example synthesis), `{ServiceName}`, `{OUT}`
+- Expected output: all files under `{OUT}/FHIR/` including the new `ValueSets/`, `CodeSystems/`, `NamingSystems/`, and `Examples/` directories
 
 ### Step 6: FHIR JSON Validation — SB5 (phase=FHIR)
 
 Dispatch **SB5 (Conformance Validator, phase=FHIR)**:
 - Agent: `sb5_conformance_validator`
-- Inputs to pass: listing and contents of all files in `{OUT}/FHIR/`, SysML PSM packages for cross-reference, `{ServiceName}`, `{OUT}`, `phase=FHIR`
-- Expected output: Phase 2 section appended to `{OUT}/PSM_ConformanceReport.md`
+- Inputs to pass: listing and contents of all files in `{OUT}/FHIR/`, SysML PSM packages for cross-reference, `{FHIR_VALIDATOR_JAR}`, `{ServiceName}`, `{OUT}`, `phase=FHIR`
+- Expected output: Phase 2 section appended to `{OUT}/PSM_ConformanceReport.md`, plus `{OUT}/validator_report.json` (raw output of the HL7 FHIR Validator)
+
+SB5 FV-02 runs the HL7 FHIR Validator. If `{FHIR_VALIDATOR_JAR}` is missing at this step, SB5 emits `FV-02-MISSING-TOOLING` as an ERROR and blocks. Do not treat this as a soft warning; the IG cannot be considered conformant without external validation.
 
 **If SB5 reports ERROR findings**: route to SB4 for correction, re-run SB4, re-run SB5 phase=FHIR. Maximum 3 correction cycles per check ID.
+
+### Step 6.5: ImplementationGuide Packaging — SB6-IG
+
+Dispatch **SB6-IG (ImplementationGuide Packager)** only if SB5 phase=FHIR reported zero ERROR findings:
+- Agent: `sb6_ig_packager`
+- Inputs to pass: listing and contents of all files under `{OUT}/FHIR/`, `{OUT}/SysML/TerminologyManifest.sysml`, `{ServiceName}`, `{OUT}`, `{FHIR_VERSION}`
+- Expected outputs: `{OUT}/FHIR/ImplementationGuide.json`, `{OUT}/FHIR/package.json`, `{OUT}/FHIR/ig.ini`, plus appended `## SB6-IG Packaging Report` section in `{OUT}/PSM_ConformanceReport.md`
+
+**If SB6-IG reports ERROR findings**: route corrections per the agent's cross-check rules (SB4 for missing/dangling artifacts, SB2-D for missing profile declarations). Re-run SB4 if needed, re-run SB5 phase=FHIR, then re-run SB6-IG. Maximum 3 correction cycles per ERROR.
 
 ### Step 7: Final Assembly and Summary
 
@@ -115,16 +140,25 @@ Verify the complete output tree:
 ├── SysML/
 │   ├── ResourceModel.sysml
 │   ├── ProfileDefinitions.sysml
+│   ├── TerminologyManifest.sysml
 │   ├── APIContracts.sysml
 │   ├── WorkflowPatterns.sysml
 │   └── PSM_Traceability.sysml
 ├── FHIR/
 │   ├── StructureDefinitions/   (one JSON per profile and extension)
 │   ├── OperationDefinitions/   (one JSON per $operation)
-│   ├── SearchParameters/       (one JSON per search parameter)
+│   ├── SearchParameters/       (one JSON per CUSTOM search parameter; base params referenced, not cloned)
 │   ├── SubscriptionTopics/     (one JSON per event topic)
-│   └── CapabilityStatement.json
-└── PSM_ConformanceReport.md
+│   ├── ValueSets/              (one JSON per VS_* entry in TerminologyManifest)
+│   ├── CodeSystems/            (one JSON per CS_* entry in TerminologyManifest)
+│   ├── NamingSystems/          (one JSON per NS_* entry in TerminologyManifest)
+│   ├── Examples/               (≥1 example instance per profile)
+│   ├── CapabilityStatement.json
+│   ├── ImplementationGuide.json (emitted by SB6-IG)
+│   ├── package.json             (NPM IG manifest, emitted by SB6-IG)
+│   └── ig.ini                   (IG Publisher config, emitted by SB6-IG)
+├── validator_report.json        (raw HL7 FHIR Validator output from SB5 FV-02)
+└── PSM_ConformanceReport.md     (includes SB6-IG Packaging Report section)
 ```
 
 Present a summary to the user:
@@ -132,6 +166,10 @@ Present a summary to the user:
 - Number of FHIR interactions mapped
 - Number of $operations defined
 - Number of SubscriptionTopics declared
+- Number of ValueSets / CodeSystems / NamingSystems packaged
+- Number of example instances emitted
+- IG package id and canonical URL (from SB6-IG)
+- External FHIR Validator result summary (PASS / counts of errors, warnings from `validator_report.json`)
 - Any unresolved WARNING findings from PSM_ConformanceReport.md
 
 ## Context Minimization Rule
@@ -155,6 +193,7 @@ Agent instructions for sub-agents:
 - `.claude/agents/sb3_psm_integrator.md`
 - `.claude/agents/sb4_fhir_json_serializer.md`
 - `.claude/agents/sb5_conformance_validator.md`
+- `.claude/agents/sb6_ig_packager.md`
 
 FHIR R5 base type reference:
 - `SysMLv2Example/FHIR_R5_Base.sysml`

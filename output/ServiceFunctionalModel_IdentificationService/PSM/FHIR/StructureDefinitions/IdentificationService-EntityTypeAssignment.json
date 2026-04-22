@@ -1,0 +1,124 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IdentificationService-EntityTypeAssignment",
+  "url": "http://example.org/fhir/StructureDefinition/IdentificationService-EntityTypeAssignment",
+  "name": "IdentificationServiceEntityTypeAssignmentProfile",
+  "title": "Identification Service — EntityTypeAssignment (Basic) Profile",
+  "status": "draft",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Basic",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Basic",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Basic",
+        "path": "Basic",
+        "short": "EntityTypeAssignment — governance assignment of an EntityType to a PolicyDomain",
+        "definition": "Basic-derived profile representing the assignment of an EntityType (with optional schema/rule-set overrides) to a governing PolicyDomain."
+      },
+      {
+        "id": "Basic.extension:assignedEntityType",
+        "path": "Basic.extension",
+        "sliceName": "assignedEntityType",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-assignedEntityType"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.extension:constrainedSchemaDefinition",
+        "path": "Basic.extension",
+        "sliceName": "constrainedSchemaDefinition",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-constrainedSchemaDefinition"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.extension:constrainedValidationRuleSet",
+        "path": "Basic.extension",
+        "sliceName": "constrainedValidationRuleSet",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-constrainedValidationRuleSet"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.extension:governingDomain",
+        "path": "Basic.extension",
+        "sliceName": "governingDomain",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-governingDomain"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.extension:lifecycleStatus",
+        "path": "Basic.extension",
+        "sliceName": "lifecycleStatus",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-lifecycleStatus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.extension:version",
+        "path": "Basic.extension",
+        "sliceName": "version",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-version"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.identifier",
+        "path": "Basic.identifier",
+        "min": 1,
+        "max": "*",
+        "mustSupport": true
+      }
+    ]
+  }
+}

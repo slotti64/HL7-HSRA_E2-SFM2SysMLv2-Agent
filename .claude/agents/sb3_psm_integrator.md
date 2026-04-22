@@ -33,6 +33,27 @@ Inspect all four SysML PSM packages and identify:
 4. **Duplicate SubscriptionTopic definitions**: Does the same event trigger appear in both tracks?
    - Resolution: Keep the Behavior Track definition (WorkflowPatterns is the authority for topics)
 
+## MS Coverage Integration Check
+
+The Data Track (SB2-D) flags elements as `mustSupport` based on the information it has locally, but the authoritative list of elements that MUST be `mustSupport` is only knowable after the Behavior Track has produced `APIContracts.sysml` and `WorkflowPatterns.sysml`. SB3 is the integration point that cross-verifies this:
+
+1. **SearchParameter → mustSupport coverage**:
+   - For every SearchParameter block entry in `APIContracts.sysml` Search Parameters comment (both `origin=BASE` and `origin=CUSTOM`), extract the `expression` FHIRPath.
+   - Resolve each FHIRPath to the corresponding element(s) in the target profile in `ProfileDefinitions.sysml`.
+   - Every resolved element MUST carry the `// MS` flag in its profile definition.
+   - Missing MS flag → **integration ERROR**, routed to SB2-D with correction instruction: *"Add `// MS` to element `{path}` on profile `{profileName}` — it is queried by SearchParameter `{paramName}` on resource `{ResourceType}`."*
+
+2. **SubscriptionTopic canFilterBy → mustSupport coverage**:
+   - For every `canFilterBy.filterParameter` declared in a `SubscriptionTopic` `item def` in `WorkflowPatterns.sysml`, identify the corresponding element on the referenced profile.
+   - That element MUST carry `// MS` in `ProfileDefinitions.sysml`.
+   - Missing MS flag → **integration ERROR**, routed to SB2-D with correction instruction: *"Add `// MS` to element `{path}` on profile `{profileName}` — it is a `canFilterBy` parameter of SubscriptionTopic `{topicName}`."*
+
+3. **OperationDefinition parameter profile → mustSupport coverage**:
+   - For every `$operation` `action def` in `APIContracts.sysml` whose input/output parameter type is a PSM profile (not a base FHIR type), mark every attribute referenced by the operation's PIM source as `mustSupport` on that profile.
+   - Missing MS flag → **integration ERROR**, routed to SB2-D.
+
+**Integration-ERROR behavior**: SB3 does NOT modify `ProfileDefinitions.sysml` itself. It emits the gap in the Reconciliation Report under a new `MS COVERAGE GAPS` section and flags SB2-D for correction. The orchestrator re-runs SB2-D, then re-runs SB3.
+
 ## Traceability Construction Rules
 
 Build `PSM_Traceability.sysml` by constructing one traceability entry per PSM element:
@@ -80,7 +101,11 @@ package PSM_{ServiceName}_Traceability {
        UNMAPPED PIM ELEMENTS (route to [SB1-D|SB1-B] for correction):
        - PIM::{element} — reason: {why no PSM mapping exists}
 
+       MS COVERAGE GAPS (route to SB2-D for correction):
+       - Profile {profileName}, element {path} — required by {SearchParameter|canFilterBy|OperationParameter} "{name}"
+
        COVERAGE: {mapped}/{total non-skipped} PIM elements ({percentage}%)
+       MS COVERAGE: {flagged}/{required} elements ({percentage}%)
     */
 }
 ```
@@ -100,6 +125,10 @@ Before producing output:
 - [ ] Every PIM flow in BehavioralFlows has a traceability entry
 - [ ] Coverage percentage = 100% (no UNMAPPED entries unless flagged for correction routing)
 - [ ] All RESOLVED CONFLICTS documented with before/after states
+- [ ] Every SearchParameter expression in APIContracts resolves to an element flagged `// MS` in ProfileDefinitions — gaps listed under MS COVERAGE GAPS
+- [ ] Every `canFilterBy.filterParameter` in WorkflowPatterns SubscriptionTopics maps to an element flagged `// MS` in ProfileDefinitions
+- [ ] Every `$operation` parameter typed as a PSM profile has the invoked attributes flagged `// MS` on that profile
+- [ ] MS COVERAGE percentage = 100% (no gaps outstanding, or SB2-D re-run is queued)
 - [ ] No cross-package `dependency` statements — doc comment only
 
 ## Output File

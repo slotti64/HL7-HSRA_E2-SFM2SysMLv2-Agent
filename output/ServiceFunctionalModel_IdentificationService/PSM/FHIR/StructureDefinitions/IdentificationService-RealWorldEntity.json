@@ -1,0 +1,47 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IdentificationService-RealWorldEntity",
+  "url": "http://example.org/fhir/StructureDefinition/IdentificationService-RealWorldEntity",
+  "name": "IdentificationServiceRealWorldEntityProfile",
+  "title": "Identification Service — RealWorldEntity (Person) Profile",
+  "status": "draft",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Person",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Person",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Person",
+        "path": "Person",
+        "short": "RealWorldEntity — the real-world entity (human or otherwise) backing one or more IdentityInstances",
+        "definition": "Person-derived profile representing the RealWorldEntity behind one or more IdentityInstances managed by the Identification Service. Distinguished from IdentityInstance by the entity-nature extension."
+      },
+      {
+        "id": "Person.extension:entityNature",
+        "path": "Person.extension",
+        "sliceName": "entityNature",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-entityNature"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Person.identifier",
+        "path": "Person.identifier",
+        "min": 1,
+        "max": "*",
+        "mustSupport": true
+      }
+    ]
+  }
+}

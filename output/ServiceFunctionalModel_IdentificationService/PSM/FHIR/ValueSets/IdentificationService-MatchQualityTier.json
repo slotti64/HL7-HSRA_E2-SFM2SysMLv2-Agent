@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "id": "IdentificationService-MatchQualityTier",
+  "url": "http://example.org/fhir/ValueSet/IdentificationService-MatchQualityTier",
+  "name": "VS_IdentificationService_MatchQualityTier",
+  "title": "Identification Service — MatchQualityTier (required)",
+  "status": "active",
+  "compose": {
+    "include": [
+      {"system": "http://example.org/fhir/CodeSystem/IdentificationService-MatchQualityTier"}
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "resourceType": "Basic",
+  "id": "example-entityconcept-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-EntityConcept"]
+  },
+  "identifier": [
+    {
+      "system": "http://example.org/fhir/sid/IdentificationService/PolicyDomain",
+      "value": "EC-PERSON"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/IdentificationService-EntityConcept",
+        "code": "person",
+        "display": "Person"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-conceptDesignation",
+      "valueString": "Person Entity Concept"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-description",
+      "valueMarkdown": "Semantic category for human persons."
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-version",
+      "valueString": "1.0.0"
+    }
+  ]
+}

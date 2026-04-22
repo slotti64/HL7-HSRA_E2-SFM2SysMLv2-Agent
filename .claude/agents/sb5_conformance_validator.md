@@ -30,13 +30,23 @@ Also requires: `{PIM_PATH}/DataModel.sysml`, `{PIM_PATH}/Operations.sysml`, `{PI
 | SC-02 | Every PIM `action def` in Operations has a mapping in APIContracts (coverage = 100% of non-notification actions) | ERROR |
 | SC-03 | Every PIM behavioral flow in BehavioralFlows has a workflow `action def` in WorkflowPatterns | ERROR |
 | SC-04 | PSM_Traceability coverage = 100% of non-skipped PIM elements (check Reconciliation Report coverage percentage) | ERROR |
+| SC-05 | Every `binding.valueSet` URL referenced in ProfileDefinitions or APIContracts has a matching entry in the TerminologyManifest produced by SB2-D | ERROR |
+| SC-06 | Every CodeSystem URL referenced in `fixedCodeableConcept.coding.system` or in `WorkflowPatterns.sysml` event codings has a matching entry in the TerminologyManifest | ERROR |
+
+**PIM coverage checks (PC) — semantic completeness, not just structural presence:**
+
+| ID | Check | Severity |
+|---|---|---|
+| PC-01 | For every PIM `item def` attribute in DataModel.sysml, the corresponding PSM profile in ProfileDefinitions.sysml either (a) constrains a base-resource element, (b) adds an extension slice, or (c) the attribute is explicitly annotated as DROPPED in ResourceModel's `doc` block with a reason. Coverage must be ≥ 90% per profile; any DROPPED attribute without a stated reason is an ERROR. | ERROR |
+| PC-02 | For every PIM `action def` parameter in Operations.sysml, the APIContracts mapping either (a) exposes it as an OperationDefinition parameter, (b) exposes it as a query parameter on the REST interaction, or (c) carries it in the request body schema (profile reference). Coverage must be 100%. | ERROR |
+| PC-03 | For every PIM `NotificationEventCategory` enum value, at least one `resourceTrigger` or `eventTrigger` entry in WorkflowPatterns' SubscriptionTopic covers it. Coverage must be 100%. | ERROR |
 
 **Metadata checks (MC):**
 
 | ID | Check | Severity |
 |---|---|---|
 | MC-01 | Every PSM `item def` in ResourceModel carries both `fhirResource` and `fhirProfile` metadata | ERROR |
-| MC-02 | Every PSM `action def` in APIContracts carries `fhirInteraction`, `fhirResource`, and `fhirMethod` metadata | ERROR |
+| MC-02 | Every PSM `action def` in APIContracts carries `fhirInteraction`, `fhirResource`, `fhirMethod`, and `fhirAffectsState` metadata. Action defs that inherit a standard R5 operation (per the table in sb1_b_api_mapper.md) additionally carry `fhirOperationBase` with the standard canonical URL. | ERROR |
 | MC-03 | Every `item def :> SubscriptionTopic` in WorkflowPatterns carries `fhirResource` metadata with value `"SubscriptionTopic"` | ERROR |
 
 **Syntax checks (SY) — MagicDraw 2026x rules:**
@@ -105,11 +115,29 @@ All FHIR JSON artifacts from `{OUT}/FHIR/` and cross-reference with SysML PSM pa
 
 | ID | Check | Severity |
 |---|---|---|
-| FV-01 | `fhirVersion` = `"5.0.0"` in StructureDefinition and CapabilityStatement artifacts only (OperationDefinition, SearchParameter, and SubscriptionTopic do not carry this field in R5) | ERROR |
+| FV-01 | `fhirVersion` = `"5.0.0"` on every artifact that carries the field | ERROR |
+| FV-02 | Official HL7 FHIR Validator (`validator_cli.jar`, R5) returns zero ERROR-level findings when run across the entire `{OUT}/FHIR/` directory as an IG package. WARNING-level validator findings are reported but do not block. | ERROR |
+
+### FV-02 External FHIR Validator Gate
+
+After FS-* and FC-* checks pass, SB5 MUST invoke the official HL7 FHIR Validator:
+
+```bash
+java -jar {FHIR_VALIDATOR_JAR} \
+     -version 5.0.0 \
+     -ig {OUT}/FHIR \
+     -output {OUT}/validator_report.json \
+     -recurse
+```
+
+- The jar path is supplied by the orchestrator as `{FHIR_VALIDATOR_JAR}` (environment variable `FHIR_VALIDATOR_JAR`, default `tools/validator_cli.jar`).
+- **If the binary is not present:** emit an ERROR finding `FV-02-MISSING-TOOLING`, block progression, and instruct the user to install it. Never let missing tooling count as PASS.
+- **Parse `validator_report.json`:** report every `"level": "error"` entry as an ERROR finding with the file path, element path, and validator message. Route each finding by the artifact type that owns it (see Correction Routing Table below — FV-02 routing).
+- **Mirror validator WARNINGs** into the SB5 report's WARNING section verbatim so the user sees them.
 
 ### Phase 2 Output Format
 
-Same structure as Phase 1 report. Append to `{OUT}/PSM_ConformanceReport.md`.
+Same structure as Phase 1 report. Append to `{OUT}/PSM_ConformanceReport.md`. Include a subsection `### External Validator Findings` that lists the raw validator summary (counts by severity) and the top 20 findings by severity.
 
 ---
 
@@ -118,12 +146,17 @@ Same structure as Phase 1 report. Append to `{OUT}/PSM_ConformanceReport.md`.
 | Check IDs | Route to Agent | Max Correction Cycles |
 |---|---|---|
 | SC-01, MC-01 | SB1-D (Resource Mapper) | 3 |
-| SC-01 (profile gap), MC-01 (profile metadata) | SB2-D (Profile Builder) | 3 |
-| SC-02, MC-02 | SB1-B (API Mapper) | 3 |
-| SC-03, MC-03 | SB2-B (Capability Builder) | 3 |
+| SC-01 (profile gap), MC-01 (profile metadata), SC-05, SC-06 | SB2-D (Profile Builder) | 3 |
+| SC-02, MC-02, PC-02 | SB1-B (API Mapper) | 3 |
+| SC-03, MC-03, PC-03 | SB2-B (Capability Builder) | 3 |
+| PC-01 | SB2-D (attribute-to-element or extension) → fall back to SB1-D (resource re-mapping) if SB2-D cannot cover | 3 (SB2-D) + 2 (SB1-D) |
 | SC-04 | SB3 (Integrator) | 2 |
 | SY-01..SY-04 | Agent responsible for the failing package | 3 |
 | FS-01..FS-04, FC-01..FC-04, FV-01 | SB4 (JSON Serializer) | 3 |
+| FV-02 (StructureDefinition file) | SB4 for URL/shape errors; SB2-D for profile-constraint errors; SB1-D for base-resource errors | 3 |
+| FV-02 (OperationDefinition / SearchParameter / CapabilityStatement file) | SB4 for URL/shape errors; SB1-B for interaction semantics; SB2-B for CapabilityStatement structure | 3 |
+| FV-02 (SubscriptionTopic file) | SB4 for URL/shape; SB2-B for trigger/filter semantics | 3 |
+| FV-02 (ValueSet / CodeSystem / NamingSystem file) | SB4 for shape; SB2-D for content | 3 |
 
 ## Escalation Protocol
 

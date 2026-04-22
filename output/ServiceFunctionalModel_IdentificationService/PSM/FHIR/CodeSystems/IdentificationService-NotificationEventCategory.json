@@ -1,0 +1,16 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-NotificationEventCategory",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-NotificationEventCategory",
+  "name": "CS_IdentificationService_NotificationEventCategory",
+  "title": "Identification Service — NotificationEventCategory",
+  "status": "active",
+  "content": "complete",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "property-change", "display": "Property Change", "definition": "Non-status property value changed."},
+    {"code": "status-change", "display": "Status Change", "definition": "IdentityStatus value changed."},
+    {"code": "link-change", "display": "Link Change", "definition": "An IdentityLink affecting the subject was created or removed."},
+    {"code": "merge-change", "display": "Merge Change", "definition": "A merge or unmerge affecting the subject occurred."}
+  ]
+}

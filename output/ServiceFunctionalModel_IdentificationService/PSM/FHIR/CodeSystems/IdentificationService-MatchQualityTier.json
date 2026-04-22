@@ -1,0 +1,15 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-MatchQualityTier",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-MatchQualityTier",
+  "name": "CS_IdentificationService_MatchQualityTier",
+  "title": "Identification Service — MatchQualityTier",
+  "status": "active",
+  "content": "complete",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "definite-match", "display": "Definite Match", "definition": "Tier-1 definite match."},
+    {"code": "presumptive-match", "display": "Presumptive Match", "definition": "Tier-2 presumptive match."},
+    {"code": "no-match", "display": "No Match", "definition": "Explicit non-match."}
+  ]
+}

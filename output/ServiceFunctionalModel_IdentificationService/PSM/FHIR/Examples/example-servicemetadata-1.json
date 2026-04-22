@@ -1,0 +1,42 @@
+{
+  "resourceType": "Basic",
+  "id": "example-servicemetadata-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-ServiceMetadata"]
+  },
+  "identifier": [
+    {
+      "system": "http://example.org/fhir/sid/IdentificationService/PolicyDomain",
+      "value": "IS-SERVICE-METADATA-001"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/IdentificationService-EntityConcept",
+        "code": "service-metadata",
+        "display": "ServiceMetadata"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-supportedDomains",
+      "valueReference": {
+        "reference": "Organization/example-policydomain-1"
+      }
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-supportedEntityTypes",
+      "valueReference": {
+        "reference": "Basic/example-entitytype-1"
+      }
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-supportedConcepts",
+      "valueReference": {
+        "reference": "Basic/example-entityconcept-1"
+      }
+    }
+  ]
+}

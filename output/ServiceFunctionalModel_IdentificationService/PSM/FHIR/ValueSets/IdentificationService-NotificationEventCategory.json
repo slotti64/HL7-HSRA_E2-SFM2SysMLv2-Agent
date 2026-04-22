@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "id": "IdentificationService-NotificationEventCategory",
+  "url": "http://example.org/fhir/ValueSet/IdentificationService-NotificationEventCategory",
+  "name": "VS_IdentificationService_NotificationEventCategory",
+  "title": "Identification Service — NotificationEventCategory (required)",
+  "status": "active",
+  "compose": {
+    "include": [
+      {"system": "http://example.org/fhir/CodeSystem/IdentificationService-NotificationEventCategory"}
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "resourceType": "SubscriptionTopic",
+  "id": "IdentificationService-IdentityUpdate",
+  "url": "http://example.org/fhir/SubscriptionTopic/IdentificationService-IdentityUpdate",
+  "title": "Identity Update Notifications",
+  "status": "active",
+  "date": "2026-04-22",
+  "description": "Notifies subscribers of changes to Patient demographics, status, link state, or merge state.",
+  "resourceTrigger": [
+    {
+      "description": "Patient resource changes — covers PROPERTY_CHANGE and STATUS_CHANGE when Patient is directly mutated.",
+      "resource": "http://hl7.org/fhir/StructureDefinition/Patient",
+      "supportedInteraction": ["create", "update", "delete"]
+    },
+    {
+      "description": "Linkage resource changes — covers LINK_CHANGE and contributes to MERGE_CHANGE when merges are realized via Linkage mutations.",
+      "resource": "http://hl7.org/fhir/StructureDefinition/Linkage",
+      "supportedInteraction": ["create", "update", "delete"]
+    }
+  ],
+  "eventTrigger": [
+    {
+      "description": "Demographic properties of a Patient were updated",
+      "event": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-EventCode",
+            "code": "property-change",
+            "display": "Property Change"
+          }
+        ]
+      },
+      "resource": "http://hl7.org/fhir/StructureDefinition/Patient"
+    },
+    {
+      "description": "Patient lifecycle status was transitioned",
+      "event": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-EventCode",
+            "code": "status-change",
+            "display": "Status Change"
+          }
+        ]
+      },
+      "resource": "http://hl7.org/fhir/StructureDefinition/Patient"
+    },
+    {
+      "description": "Patients were linked or unlinked",
+      "event": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-EventCode",
+            "code": "link-change",
+            "display": "Link Change"
+          }
+        ]
+      },
+      "resource": "http://hl7.org/fhir/StructureDefinition/Linkage"
+    },
+    {
+      "description": "Patient identities were merged or unmerged",
+      "event": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-EventCode",
+            "code": "merge-change",
+            "display": "Merge Change"
+          }
+        ]
+      },
+      "resource": "http://hl7.org/fhir/StructureDefinition/Patient"
+    }
+  ],
+  "canFilterBy": [
+    {
+      "resource": "http://hl7.org/fhir/StructureDefinition/Patient",
+      "filterParameter": "identifier",
+      "comparator": ["eq"]
+    },
+    {
+      "resource": "http://hl7.org/fhir/StructureDefinition/Patient",
+      "filterParameter": "organization",
+      "comparator": ["eq"]
+    }
+  ]
+}

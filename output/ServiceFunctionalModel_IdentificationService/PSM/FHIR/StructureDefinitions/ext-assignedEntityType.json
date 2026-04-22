@@ -1,0 +1,33 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-assignedEntityType",
+  "url": "http://example.org/fhir/StructureDefinition/ext-assignedEntityType",
+  "name": "ExtAssignedEntityType",
+  "title": "Assigned Entity Type Extension",
+  "status": "draft",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [{"type": "element", "expression": "Basic"}],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {"id": "Extension", "path": "Extension", "short": "EntityType assigned in this assignment"},
+      {"id": "Extension.url", "path": "Extension.url", "fixedUri": "http://example.org/fhir/StructureDefinition/ext-assignedEntityType"},
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": ["http://example.org/fhir/StructureDefinition/IdentificationService-EntityType"]
+          }
+        ]
+      }
+    ]
+  }
+}

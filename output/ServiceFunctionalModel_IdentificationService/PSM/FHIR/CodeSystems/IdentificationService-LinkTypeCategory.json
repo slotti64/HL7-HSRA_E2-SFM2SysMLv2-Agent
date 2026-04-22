@@ -1,0 +1,14 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-LinkTypeCategory",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-LinkTypeCategory",
+  "name": "CS_IdentificationService_LinkTypeCategory",
+  "title": "Identification Service — LinkTypeCategory",
+  "status": "active",
+  "content": "complete",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "peer-link", "display": "Peer Link", "definition": "Active bidirectional equivalence between identities."},
+    {"code": "merge-deprecation", "display": "Merge Deprecation", "definition": "Directed link marking the source identity as deprecated in favor of the target."}
+  ]
+}

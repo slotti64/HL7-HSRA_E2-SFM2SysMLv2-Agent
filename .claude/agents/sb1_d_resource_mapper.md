@@ -47,12 +47,35 @@ For each PIM `item def`, first determine its **nature** along two axes, then app
 | Linking relationship | Standalone resource | `Linkage` |
 | Event/notification trigger | Standalone resource | `SubscriptionTopic` |
 | Subscription record | Standalone resource | `Subscription` |
-| Configuration/metadata — simple code table | Standalone resource | `Basic` (CUSTOM flag + extension) |
-| Configuration/metadata — terminology binding | Standalone resource | `Basic` (CUSTOM flag + extension) |
+| Configuration/metadata — simple code table | Standalone resource | `CodeSystem` / `ValueSet` (prefer terminology resources over Basic) |
+| Configuration/metadata — terminology binding | Standalone resource | `ValueSet` (or `CodeSystem` if it also defines codes) |
 | Operation parameter | Operation parameter | **Skip** — do not emit a standalone resource mapping |
 | Any | Datatype | Do not emit a standalone `item def`; note in quality report |
 
-If no nature clearly fits after applying these rules, map to `Basic` and flag as `CUSTOM` in the quality report.
+### R5-Alternatives Checklist — consult BEFORE flagging CUSTOM/Basic
+
+Falling back to `Basic` is expensive: it loses terminology support, search capabilities, validator coverage, and interoperability. Before declaring `CUSTOM` on a `Basic`-backed profile, you MUST walk this checklist and record in the quality report which alternatives were considered and why each was rejected:
+
+| If the PIM concept is… | Prefer this R5 resource over Basic |
+|---|---|
+| A collection of related resources handed off as a single unit | `Bundle` (type=collection/document/batch/transaction as appropriate) |
+| A namespace, identifier system, or URI authority | `NamingSystem` |
+| A set of codes the service defines | `CodeSystem` |
+| A restriction or union of codes drawn from one or more CodeSystems | `ValueSet` |
+| A mapping between two code systems | `ConceptMap` |
+| A transient request/response payload for an operation | `Parameters` (do NOT persist as a standalone profile — it is an operation parameter type) |
+| A list of members forming a cohort or batch | `Group` |
+| A logical record pulling together other resources | `Composition` or `List` |
+| A structured narrative report | `DocumentReference` + `Composition` |
+| A unit of asynchronous or long-running work with status | `Task` |
+| A dispatched message between systems | `MessageHeader` + payload bundle |
+| Audit or provenance of a change to another resource | `Provenance` or `AuditEvent` |
+| A policy/rule/consent decision | `Consent` or `Contract` (Contract only if legally binding) |
+| A structured questionnaire or data collection form | `Questionnaire` + `QuestionnaireResponse` |
+| Configuration for endpoint addressing/routing | `Endpoint` |
+| A scheduled calendar entry | `Schedule` + `Slot` |
+
+Only after ruling out every row above may you map the concept to `Basic`. When you do, the quality report CUSTOM entry MUST include a `rejected-alternatives` list explaining why each considered R5 resource did not fit (e.g. "Group — rejected because the PIM concept has no members; Task — rejected because there is no lifecycle status; Basic — accepted as residual"). A CUSTOM entry without a `rejected-alternatives` list is an SB5 SC-01 ERROR.
 
 ## Attribute Mapping Rules
 
@@ -87,7 +110,11 @@ package PSM_{ServiceName}_ResourceModel {
        MAPPED:   {PIMItemName} → {FHIRResourceType} (fit: HIGH|MEDIUM|LOW)
        EXTENDED: {PIMItemName}.{attribute} → FHIRExtension (url: http://example.org/fhir/StructureDefinition/ext-{attributeName})
        SKIPPED:  {PIMItemName} — operation parameter type, not a standalone resource
-       CUSTOM:   {PIMItemName} → Basic (no FHIR R5 resource match; requires custom profile)
+       CUSTOM:   {PIMItemName} → Basic (residual)
+                 rejected-alternatives:
+                 - {FHIRResourceType1}: {reason for rejection}
+                 - {FHIRResourceType2}: {reason for rejection}
+                 - ...
     */
 }
 ```
@@ -109,6 +136,8 @@ Before producing output, verify:
 - [ ] Every mapped `item def` carries both `fhirResource` and `fhirProfile` metadata
 - [ ] No operation Request/Response types are emitted as standalone resource mappings
 - [ ] All extensions use the canonical URL pattern `http://example.org/fhir/StructureDefinition/ext-{attributeName}`
+- [ ] Every CUSTOM entry in the quality report carries a `rejected-alternatives` list covering the R5-Alternatives Checklist (Bundle, NamingSystem, CodeSystem, ValueSet, ConceptMap, Parameters, Group, Composition, List, DocumentReference, Task, MessageHeader, Provenance, AuditEvent, Consent, Contract, Questionnaire, Endpoint, Schedule) before falling back to `Basic`
+- [ ] No concept whose PIM semantics match a terminology resource (code table, namespace, mapping) is mapped to `Basic` instead of `CodeSystem`/`ValueSet`/`ConceptMap`/`NamingSystem`
 - [ ] Package brackets are balanced
 - [ ] No nested `import` statements
 

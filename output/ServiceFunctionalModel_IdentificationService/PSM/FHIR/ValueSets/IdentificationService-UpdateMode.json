@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "id": "IdentificationService-UpdateMode",
+  "url": "http://example.org/fhir/ValueSet/IdentificationService-UpdateMode",
+  "name": "VS_IdentificationService_UpdateMode",
+  "title": "Identification Service — UpdateMode (required)",
+  "status": "active",
+  "compose": {
+    "include": [
+      {"system": "http://example.org/fhir/CodeSystem/IdentificationService-UpdateMode"}
+    ]
+  }
+}

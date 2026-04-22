@@ -1,0 +1,18 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-EntityConcept",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-EntityConcept",
+  "name": "CS_IdentificationService_EntityConcept",
+  "title": "Identification Service — EntityConcept",
+  "status": "active",
+  "content": "fragment",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "person", "display": "Person", "definition": "A human individual."},
+    {"code": "organization", "display": "Organization", "definition": "An organizational entity."},
+    {"code": "device", "display": "Device", "definition": "A device or technical entity."},
+    {"code": "entity-type", "display": "EntityType", "definition": "Kind-of-Basic marker for an EntityType resource (schema-bound typing of entities under an EntityConcept)."},
+    {"code": "entity-type-assignment", "display": "EntityTypeAssignment", "definition": "Kind-of-Basic marker for an EntityTypeAssignment resource (governance binding of an EntityType to a PolicyDomain)."},
+    {"code": "service-metadata", "display": "ServiceMetadata", "definition": "Kind-of-Basic marker for the Identification Service's self-describing service-metadata resource."}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "id": "IdentificationService-LinkMethodCategory",
+  "url": "http://example.org/fhir/ValueSet/IdentificationService-LinkMethodCategory",
+  "name": "VS_IdentificationService_LinkMethodCategory",
+  "title": "Identification Service — LinkMethodCategory (required)",
+  "status": "active",
+  "compose": {
+    "include": [
+      {"system": "http://example.org/fhir/CodeSystem/IdentificationService-LinkMethodCategory"}
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "resourceType": "SubscriptionTopic",
+  "id": "example-identityupdatetopic-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-IdentityUpdateTopic"]
+  },
+  "url": "http://example.org/fhir/SubscriptionTopic/IdentificationService-IdentityUpdate",
+  "title": "Identity Update Notifications",
+  "status": "active",
+  "description": "Notifies subscribers of changes to Patient demographics, status, link state, or merge state.",
+  "resourceTrigger": [
+    {
+      "description": "Patient resource changes",
+      "resource": "http://hl7.org/fhir/StructureDefinition/Patient",
+      "supportedInteraction": ["create", "update", "delete"]
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-resourceTrigger",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-NotificationEventCategory",
+            "code": "property-change",
+            "display": "Property Change"
+          }
+        ]
+      }
+    }
+  ]
+}

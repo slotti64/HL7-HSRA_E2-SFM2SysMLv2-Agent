@@ -1,0 +1,14 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-LinkMethodCategory",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-LinkMethodCategory",
+  "name": "CS_IdentificationService_LinkMethodCategory",
+  "title": "Identification Service — LinkMethodCategory",
+  "status": "active",
+  "content": "complete",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "manual", "display": "Manual", "definition": "Link established by a human operator."},
+    {"code": "automated", "display": "Automated", "definition": "Link established by a matching algorithm."}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "id": "IdentificationService-IdentityStatus",
+  "url": "http://example.org/fhir/ValueSet/IdentificationService-IdentityStatus",
+  "name": "VS_IdentificationService_IdentityStatus",
+  "title": "Identification Service — IdentityStatus (required)",
+  "status": "active",
+  "compose": {
+    "include": [
+      {"system": "http://example.org/fhir/CodeSystem/IdentificationService-IdentityStatus"}
+    ]
+  }
+}

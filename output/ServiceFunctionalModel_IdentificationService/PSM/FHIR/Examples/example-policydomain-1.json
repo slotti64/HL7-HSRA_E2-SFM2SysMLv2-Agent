@@ -1,0 +1,50 @@
+{
+  "resourceType": "Organization",
+  "id": "example-policydomain-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-PolicyDomain"]
+  },
+  "identifier": [
+    {
+      "system": "http://example.org/fhir/sid/IdentificationService/PolicyDomain",
+      "value": "IS-ITALY-NORTH"
+    }
+  ],
+  "active": true,
+  "name": "Identification Service — Italy North Region Policy Domain",
+  "alias": ["Geographical identity namespace for Northern Italy"],
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-lifecycleStatus",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-IdentityStatus",
+            "code": "active",
+            "display": "Active"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-version",
+      "valueString": "1.0.0"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-forCrossReference",
+      "valueBoolean": false
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-languagesSupported",
+      "valueCode": "it"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-languagesSupported",
+      "valueCode": "en"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-defaultLanguage",
+      "valueCode": "it"
+    }
+  ]
+}

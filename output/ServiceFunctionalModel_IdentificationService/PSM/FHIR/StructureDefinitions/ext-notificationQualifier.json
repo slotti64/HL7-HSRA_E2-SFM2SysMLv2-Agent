@@ -1,0 +1,32 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-notificationQualifier",
+  "url": "http://example.org/fhir/StructureDefinition/ext-notificationQualifier",
+  "name": "ExtNotificationQualifier",
+  "title": "Notification Qualifier Extension",
+  "status": "draft",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [{"type": "element", "expression": "Subscription"}],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {"id": "Extension", "path": "Extension", "short": "NotificationEventCategory classifier"},
+      {"id": "Extension.url", "path": "Extension.url", "fixedUri": "http://example.org/fhir/StructureDefinition/ext-notificationQualifier"},
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [{"code": "CodeableConcept"}],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/IdentificationService-NotificationEventCategory"
+        }
+      }
+    ]
+  }
+}

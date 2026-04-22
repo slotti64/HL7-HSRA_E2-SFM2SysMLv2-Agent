@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "id": "IdentificationService-EntityConcept",
+  "url": "http://example.org/fhir/ValueSet/IdentificationService-EntityConcept",
+  "name": "VS_IdentificationService_EntityConcept",
+  "title": "Identification Service — EntityConcept (required)",
+  "status": "active",
+  "compose": {
+    "include": [
+      {"system": "http://example.org/fhir/CodeSystem/IdentificationService-EntityConcept"}
+    ]
+  }
+}

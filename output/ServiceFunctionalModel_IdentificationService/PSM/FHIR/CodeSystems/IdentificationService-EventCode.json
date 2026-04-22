@@ -1,0 +1,16 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-EventCode",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-EventCode",
+  "name": "CS_IdentificationService_EventCode",
+  "title": "Identification Service — Event Codes",
+  "status": "active",
+  "content": "complete",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "property-change", "display": "Property Change", "definition": "Demographic properties of a Patient were updated."},
+    {"code": "status-change", "display": "Status Change", "definition": "Patient lifecycle status was transitioned."},
+    {"code": "link-change", "display": "Link Change", "definition": "Patients were linked or unlinked."},
+    {"code": "merge-change", "display": "Merge Change", "definition": "Patient identities were merged or unmerged."}
+  ]
+}

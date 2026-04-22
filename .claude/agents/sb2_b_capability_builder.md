@@ -34,6 +34,41 @@ Create a `SubscriptionTopic` for every behavioral flow that satisfies ANY of the
 - The flow is triggered by a state change (status transition, property update, link creation/deletion, merge/unmerge)
 - The PIM `BehavioralFlows.sysml` contains a notification-type operation reference
 
+### SubscriptionTopic Reference Form
+
+When declaring the topic's triggers, every resource reference MUST use the full R5 canonical URL form:
+
+- `resourceTrigger.resource` → `http://hl7.org/fhir/StructureDefinition/{ResourceType}`
+- `eventTrigger.resource` → `http://hl7.org/fhir/StructureDefinition/{ResourceType}`
+- `canFilterBy.resource` → `http://hl7.org/fhir/StructureDefinition/{ResourceType}`
+- `notificationShape.resource` → `http://hl7.org/fhir/StructureDefinition/{ResourceType}`
+
+Shorthand names like `"Patient"` or `"Linkage"` are relative URLs and fail strict R5 validation.
+
+### Event Coding & CodeSystem Requirement
+
+Every `eventTrigger.event.coding` used in WorkflowPatterns MUST carry a `system` URL that appears in `TerminologyManifest.sysml` (emitted by SB2-D). If the event code is service-specific, ensure SB2-D registers the CodeSystem:
+- Emit the event coding in WorkflowPatterns using the intended system URL (`http://example.org/fhir/CodeSystem/{ServiceName}-EventCode`)
+- Additionally emit a `// REQUIRED-CS: {canonicalUrl} codes: [CODE1, CODE2, ...]` comment in WorkflowPatterns so SB2-D can include the CodeSystem entry in TerminologyManifest. SB5 SC-06 enforces this.
+
+## SearchParameter Reuse Rule (CapabilityStatement)
+
+When assembling the CapabilityStatement summary, every SearchParameter entry must reference either:
+- **A base FHIR SearchParameter** (`http://hl7.org/fhir/SearchParameter/{id}`) — preferred whenever the PIM-derived search semantics are identical to the base parameter's `expression`, `base`, `target`, and `type`.
+- **A service-specific custom SearchParameter** — required only when the PSM genuinely deviates from base in one of: `expression` (different FHIRPath), `base` (different or additional resource types), `target` (different reference targets), or `type` (e.g. quantity where base is string).
+
+Do not emit a custom SearchParameter URL that would be an exact clone of a base parameter. Cloning base search params bloats the IG, confuses clients, and duplicates server indexing.
+
+Mark each SearchParameter block entry with an origin tag so SB4 and SB5 can enforce:
+
+```sysml
+/* Search Parameters
+   {paramName} on {ResourceType}: type={...}, expression={...}, origin={BASE|CUSTOM}, baseUrl={if BASE, canonical URL of the base SearchParameter}
+*/
+```
+
+If `origin=BASE`, SB4 does NOT emit a SearchParameter JSON file and the CapabilityStatement uses the base URL directly. If `origin=CUSTOM`, SB4 emits the SearchParameter JSON as usual.
+
 ## CapabilityStatement Summary Rules
 
 Aggregate all interactions from `APIContracts.sysml` into the summary:
@@ -71,12 +106,16 @@ package PSM_{ServiceName}_WorkflowPatterns {
     // SubscriptionTopic (for event-driven flows)
     item def {EventName}Topic :> FHIR_R5_Base::SubscriptionTopic {
         doc /* Triggers on: {triggerDescription}
-             Maps PIM event: {PIMFlowOrOperation} */
+             Maps PIM event: {PIMFlowOrOperation}
+             resourceTrigger.resource: http://hl7.org/fhir/StructureDefinition/{ResourceType}
+             eventTrigger.event.system: http://example.org/fhir/CodeSystem/{ServiceName}-EventCode
+             canFilterBy.resource: http://hl7.org/fhir/StructureDefinition/{ResourceType} */
         attribute url : String = "http://example.org/fhir/SubscriptionTopic/{ServiceName}-{eventName}";
         attribute title : String = "{Human-readable event title}";
         attribute status : String = "active";
         metadata fhirResource { value "SubscriptionTopic"; }
     }
+    // REQUIRED-CS: http://example.org/fhir/CodeSystem/{ServiceName}-EventCode codes: [EVENT_CODE_1, EVENT_CODE_2, ...]
 
     // Async $operation + Task polling workflow (for long-running flows)
     action def {FlowName}AsyncWorkflow {
@@ -118,7 +157,11 @@ Before producing output:
 - [ ] Every PIM behavioral flow has a corresponding workflow `action def`
 - [ ] Every long-running or asynchronous PIM behavioral flow uses the AsyncWorkflow template
 - [ ] Every event-triggered flow has a `SubscriptionTopic` item def
+- [ ] Every `SubscriptionTopic` `doc` block declares its `resourceTrigger.resource`, `eventTrigger.event.system`, and `canFilterBy.resource` values using the full `http://hl7.org/fhir/StructureDefinition/{Type}` canonical URL
+- [ ] Every custom event-code CodeSystem used in a SubscriptionTopic event coding is declared in a `// REQUIRED-CS:` line so SB2-D can register it in TerminologyManifest
 - [ ] CapabilityStatement Summary covers every distinct `fhirResource` value in APIContracts
+- [ ] Every SearchParameter listed in the CapabilityStatement Summary is tagged `origin=BASE` (with `baseUrl=...`) or `origin=CUSTOM`; no clone of a base parameter is emitted as custom
+- [ ] Every `NotificationEventCategory` enum value from the PIM is covered by at least one `resourceTrigger` or `eventTrigger` in a SubscriptionTopic (SB5 PC-03)
 - [ ] Workflow sub-actions reference valid action names from `PSM_{ServiceName}_APIContracts`
 - [ ] Every `SubscriptionTopic` item def carries `fhirResource` metadata with value `"SubscriptionTopic"`
 - [ ] Package brackets balanced; no nested imports

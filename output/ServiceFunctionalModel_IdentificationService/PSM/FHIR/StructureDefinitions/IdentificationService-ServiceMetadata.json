@@ -1,0 +1,79 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IdentificationService-ServiceMetadata",
+  "url": "http://example.org/fhir/StructureDefinition/IdentificationService-ServiceMetadata",
+  "name": "IdentificationServiceServiceMetadataProfile",
+  "title": "Identification Service — ServiceMetadata (Basic) Profile",
+  "status": "draft",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Basic",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Basic",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Basic",
+        "path": "Basic",
+        "short": "ServiceMetadata — the Identification Service's own declaration of supported domains, entity types, and concepts",
+        "definition": "Basic-derived profile representing the Identification Service's self-describing service metadata: enumerating the PolicyDomains, EntityTypes, and EntityConcepts it serves."
+      },
+      {
+        "id": "Basic.extension:supportedConcepts",
+        "path": "Basic.extension",
+        "sliceName": "supportedConcepts",
+        "min": 1,
+        "max": "*",
+        "mustSupport": true,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-supportedConcepts"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.extension:supportedDomains",
+        "path": "Basic.extension",
+        "sliceName": "supportedDomains",
+        "min": 1,
+        "max": "*",
+        "mustSupport": true,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-supportedDomains"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.extension:supportedEntityTypes",
+        "path": "Basic.extension",
+        "sliceName": "supportedEntityTypes",
+        "min": 1,
+        "max": "*",
+        "mustSupport": true,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-supportedEntityTypes"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Basic.identifier",
+        "path": "Basic.identifier",
+        "min": 1,
+        "max": "*",
+        "mustSupport": true
+      }
+    ]
+  }
+}

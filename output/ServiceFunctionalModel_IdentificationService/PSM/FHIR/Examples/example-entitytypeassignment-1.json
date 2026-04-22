@@ -1,0 +1,56 @@
+{
+  "resourceType": "Basic",
+  "id": "example-entitytypeassignment-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-EntityTypeAssignment"]
+  },
+  "identifier": [
+    {
+      "system": "http://example.org/fhir/sid/IdentificationService/PolicyDomain",
+      "value": "ETA-PERSON-ITALY-NORTH"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/IdentificationService-EntityConcept",
+        "code": "entity-type-assignment",
+        "display": "EntityTypeAssignment"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-lifecycleStatus",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-IdentityStatus",
+            "code": "active",
+            "display": "Active"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-version",
+      "valueString": "1.0.0"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-constrainedSchemaDefinition",
+      "valueString": "http://example.org/fhir/schema/person-italy-north-override.json"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-assignedEntityType",
+      "valueReference": {
+        "reference": "Basic/example-entitytype-1"
+      }
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-governingDomain",
+      "valueReference": {
+        "reference": "Organization/example-policydomain-1"
+      }
+    }
+  ]
+}

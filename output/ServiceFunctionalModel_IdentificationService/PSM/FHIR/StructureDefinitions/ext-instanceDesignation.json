@@ -1,0 +1,22 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-instanceDesignation",
+  "url": "http://example.org/fhir/StructureDefinition/ext-instanceDesignation",
+  "name": "ExtInstanceDesignation",
+  "title": "Instance Designation Extension",
+  "status": "draft",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [{"type": "element", "expression": "Patient"}],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {"id": "Extension", "path": "Extension", "short": "Human-readable designation for administrative listings"},
+      {"id": "Extension.url", "path": "Extension.url", "fixedUri": "http://example.org/fhir/StructureDefinition/ext-instanceDesignation"},
+      {"id": "Extension.value[x]", "path": "Extension.value[x]", "min": 1, "max": "1", "type": [{"code": "string"}]}
+    ]
+  }
+}

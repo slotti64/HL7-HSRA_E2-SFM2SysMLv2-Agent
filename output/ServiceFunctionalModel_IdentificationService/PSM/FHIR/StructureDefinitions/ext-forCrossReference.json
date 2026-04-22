@@ -1,0 +1,22 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-forCrossReference",
+  "url": "http://example.org/fhir/StructureDefinition/ext-forCrossReference",
+  "name": "ExtForCrossReference",
+  "title": "For Cross Reference Extension",
+  "status": "draft",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [{"type": "element", "expression": "Organization"}],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {"id": "Extension", "path": "Extension", "short": "Flag for cross-reference-only PolicyDomains"},
+      {"id": "Extension.url", "path": "Extension.url", "fixedUri": "http://example.org/fhir/StructureDefinition/ext-forCrossReference"},
+      {"id": "Extension.value[x]", "path": "Extension.value[x]", "min": 1, "max": "1", "type": [{"code": "boolean"}]}
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "resourceType": "Linkage",
+  "id": "example-linkage-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-IdentityLink"]
+  },
+  "active": true,
+  "item": [
+    {
+      "type": "source",
+      "resource": {
+        "reference": "Patient/example-patient-1"
+      }
+    },
+    {
+      "type": "alternate",
+      "resource": {
+        "reference": "Patient/example-patient-1"
+      }
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-linkTypeCategory",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-LinkTypeCategory",
+            "code": "peer-link",
+            "display": "Peer Link"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-linkMethod",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-LinkMethodCategory",
+            "code": "automated",
+            "display": "Automated"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-linkReason",
+      "valueString": "Automated matching found Tier-1 definite match between source and alternate."
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-provenance",
+      "valueString": "Link created by IS matching algorithm v2.3 on 2026-04-22."
+    }
+  ]
+}

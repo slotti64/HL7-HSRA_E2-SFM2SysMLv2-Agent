@@ -1,0 +1,32 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-linkTypeCategory",
+  "url": "http://example.org/fhir/StructureDefinition/ext-linkTypeCategory",
+  "name": "ExtLinkTypeCategory",
+  "title": "Link Type Category Extension",
+  "status": "draft",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [{"type": "element", "expression": "Linkage"}],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {"id": "Extension", "path": "Extension", "short": "IS-specific link type (peer-link | merge-deprecation)"},
+      {"id": "Extension.url", "path": "Extension.url", "fixedUri": "http://example.org/fhir/StructureDefinition/ext-linkTypeCategory"},
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [{"code": "CodeableConcept"}],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/IdentificationService-LinkTypeCategory"
+        }
+      }
+    ]
+  }
+}

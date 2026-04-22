@@ -1,0 +1,13 @@
+{
+  "resourceType": "ValueSet",
+  "id": "IdentificationService-EventCode",
+  "url": "http://example.org/fhir/ValueSet/IdentificationService-EventCode",
+  "name": "VS_IdentificationService_EventCode",
+  "title": "Identification Service — Event Codes (required)",
+  "status": "active",
+  "compose": {
+    "include": [
+      {"system": "http://example.org/fhir/CodeSystem/IdentificationService-EventCode"}
+    ]
+  }
+}

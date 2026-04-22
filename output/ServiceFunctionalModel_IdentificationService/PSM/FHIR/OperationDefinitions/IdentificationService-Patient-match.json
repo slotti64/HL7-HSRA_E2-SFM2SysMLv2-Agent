@@ -1,0 +1,22 @@
+{
+  "resourceType": "OperationDefinition",
+  "id": "IdentificationService-Patient-match",
+  "url": "http://example.org/fhir/OperationDefinition/IdentificationService-Patient-match",
+  "name": "IdentificationServicePatientMatch",
+  "title": "Identification Service — $match on Patient",
+  "status": "draft",
+  "kind": "operation",
+  "affectsState": false,
+  "code": "match",
+  "base": "http://hl7.org/fhir/OperationDefinition/Patient-match",
+  "resource": ["Patient"],
+  "system": false,
+  "type": true,
+  "instance": false,
+  "parameter": [
+    {"name": "resource", "use": "in", "min": 1, "max": "1", "type": "Patient"},
+    {"name": "onlyCertainMatches", "use": "in", "min": 0, "max": "1", "type": "boolean"},
+    {"name": "count", "use": "in", "min": 0, "max": "1", "type": "integer"},
+    {"name": "return", "use": "out", "min": 1, "max": "1", "type": "Bundle"}
+  ]
+}

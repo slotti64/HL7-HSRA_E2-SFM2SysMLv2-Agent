@@ -1,0 +1,15 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "IdentificationService-UpdateMode",
+  "url": "http://example.org/fhir/CodeSystem/IdentificationService-UpdateMode",
+  "name": "CS_IdentificationService_UpdateMode",
+  "title": "Identification Service — UpdateMode",
+  "status": "active",
+  "content": "complete",
+  "caseSensitive": true,
+  "concept": [
+    {"code": "overwrite", "display": "Overwrite", "definition": "Replace target values with request values."},
+    {"code": "valued", "display": "Valued", "definition": "Replace only properties present in the request; leave others unchanged."},
+    {"code": "unspecified", "display": "Unspecified", "definition": "Server-chosen semantics per policy."}
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "resourceType": "Basic",
+  "id": "example-entitytype-1",
+  "meta": {
+    "profile": ["http://example.org/fhir/StructureDefinition/IdentificationService-EntityType"]
+  },
+  "identifier": [
+    {
+      "system": "http://example.org/fhir/sid/IdentificationService/PolicyDomain",
+      "value": "ET-PERSON-IS-ITALY-V1"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/IdentificationService-EntityConcept",
+        "code": "entity-type",
+        "display": "EntityType"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-typeDesignation",
+      "valueString": "Person-IS-Italy-v1"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-description",
+      "valueMarkdown": "Person entity type as used by the Italian Identification Service."
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-lifecycleStatus",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/IdentificationService-IdentityStatus",
+            "code": "active",
+            "display": "Active"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-version",
+      "valueString": "1.0.0"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-schemaDefinition",
+      "valueString": "http://example.org/fhir/schema/person-is-italy-v1.json"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-validationRuleSet",
+      "valueString": "http://example.org/fhir/rules/person-is-italy-v1.drl"
+    },
+    {
+      "url": "http://example.org/fhir/StructureDefinition/ext-classifiedConcept",
+      "valueReference": {
+        "reference": "Basic/example-entityconcept-1"
+      }
+    }
+  ]
+}
