@@ -19,8 +19,13 @@ package CIM_IS {
                  * within the same PolicyDomain.
                  * [ST-085, ST-082] */
             constraint {
-                identityInstance.instanceDesignation != otherInstance.instanceDesignation
-                or identityInstance.governingAssignment != otherInstance.governingAssignment
+                IdentityInstance.allInstances()->forAll(inst1 |
+                    IdentityInstance.allInstances()->forAll(otherInstance |
+                        inst1 = otherInstance
+                        or inst1.governingAssignment.identifier
+                            != otherInstance.governingAssignment.identifier
+                        or inst1.governingAssignment
+                            != otherInstance.governingAssignment))
             }
         }
 
@@ -173,7 +178,7 @@ package CIM_IS {
                  * [ST-108] */
             constraint {
                 sourceIdentity.governingAssignment.governingDomain
-                == targetIdentity.governingAssignment.governingDomain
+                == targetIdentity.governingAssignment.governingDomain00
             }
         }
 
