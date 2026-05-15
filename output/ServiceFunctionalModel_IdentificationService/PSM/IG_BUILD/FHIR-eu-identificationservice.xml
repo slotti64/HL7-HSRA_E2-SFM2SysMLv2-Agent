@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ciUrl="" defaultVersion="current" defaultWorkgroup="" url="http://example.org/fhir">
+<version code="current" url=""/>
+<artifactPageExtension value="-definitions"/>
+<artifactPageExtension value="-examples"/>
+<artifactPageExtension value="-mappings"/>
+<artifact id="StructureDefinition/ext-assignedEntityType" key="StructureDefinition-ext-assignedEntityType" name="Assigned Entity Type Extension"/>
+<artifact id="StructureDefinition/ext-classifiedConcept" key="StructureDefinition-ext-classifiedConcept" name="Classified Concept Extension"/>
+<artifact id="StructureDefinition/ext-conceptDesignation" key="StructureDefinition-ext-conceptDesignation" name="Concept Designation Extension"/>
+<artifact id="StructureDefinition/ext-constrainedSchemaDefinition" key="StructureDefinition-ext-constrainedSchemaDefinition" name="Constrained Schema Definition Extension"/>
+<artifact id="StructureDefinition/ext-constrainedValidationRuleSet" key="StructureDefinition-ext-constrainedValidationRuleSet" name="Constrained Validation Rule Set Extension"/>
+<artifact id="StructureDefinition/ext-defaultLanguage" key="StructureDefinition-ext-defaultLanguage" name="Default Language Extension"/>
+<artifact id="StructureDefinition/ext-description" key="StructureDefinition-ext-description" name="Description Extension"/>
+<artifact id="StructureDefinition/ext-entityNature" key="StructureDefinition-ext-entityNature" name="Entity Nature Extension"/>
+<artifact id="StructureDefinition/ext-forCrossReference" key="StructureDefinition-ext-forCrossReference" name="For Cross Reference Extension"/>
+<artifact id="StructureDefinition/ext-governingDomain" key="StructureDefinition-ext-governingDomain" name="Governing Domain Extension"/>
+<artifact id="CapabilityStatement/IdentificationService" key="CapabilityStatement-IdentificationService" name="HL7 Identification Service CapabilityStatement"/>
+<artifact id="OperationDefinition/IdentificationService-Patient-everything" key="OperationDefinition-IdentificationService-Patient-everything" name="Identification Service — $everything on Patient"/>
+<artifact id="OperationDefinition/IdentificationService-Patient-match" key="OperationDefinition-IdentificationService-Patient-match" name="Identification Service — $match on Patient"/>
+<artifact id="OperationDefinition/IdentificationService-Patient-merge" key="OperationDefinition-IdentificationService-Patient-merge" name="Identification Service — $merge on Patient"/>
+<artifact id="OperationDefinition/IdentificationService-Patient-unmerge" key="OperationDefinition-IdentificationService-Patient-unmerge" name="Identification Service — $unmerge on Patient"/>
+<artifact id="CodeSystem/IdentificationService-EntityConcept" key="CodeSystem-IdentificationService-EntityConcept" name="Identification Service — EntityConcept"/>
+<artifact id="StructureDefinition/IdentificationService-EntityConcept" key="StructureDefinition-IdentificationService-EntityConcept" name="Identification Service — EntityConcept (Basic) Profile"/>
+<artifact id="ValueSet/IdentificationService-EntityConcept" key="ValueSet-IdentificationService-EntityConcept" name="Identification Service — EntityConcept (required)"/>
+<artifact id="StructureDefinition/IdentificationService-EntityType" key="StructureDefinition-IdentificationService-EntityType" name="Identification Service — EntityType (Basic) Profile"/>
+<artifact id="StructureDefinition/IdentificationService-EntityTypeAssignment" key="StructureDefinition-IdentificationService-EntityTypeAssignment" name="Identification Service — EntityTypeAssignment (Basic) Profile"/>
+<artifact id="CodeSystem/IdentificationService-EventCode" key="CodeSystem-IdentificationService-EventCode" name="Identification Service — Event Codes"/>
+<artifact id="ValueSet/IdentificationService-EventCode" key="ValueSet-IdentificationService-EventCode" name="Identification Service — Event Codes (required)"/>
+<artifact id="CodeSystem/IdentificationService-FaultCategory" key="CodeSystem-IdentificationService-FaultCategory" name="Identification Service — FaultCategory"/>
+<artifact id="ValueSet/IdentificationService-FaultCategory" key="ValueSet-IdentificationService-FaultCategory" name="Identification Service — FaultCategory (required)"/>
+<artifact id="StructureDefinition/IdentificationService-IdentityInstance" key="StructureDefinition-IdentificationService-IdentityInstance" name="Identification Service — IdentityInstance (Patient) Profile"/>
+<artifact id="NamingSystem/IdentificationService-IdentityInstance" key="NamingSystem-IdentificationService-IdentityInstance" name="Identification Service — IdentityInstance Identifier Namespace"/>
+<artifact id="StructureDefinition/IdentificationService-IdentityLink" key="StructureDefinition-IdentificationService-IdentityLink" name="Identification Service — IdentityLink (Linkage) Profile"/>
+<artifact id="CodeSystem/IdentificationService-IdentityStatus" key="CodeSystem-IdentificationService-IdentityStatus" name="Identification Service — IdentityStatus"/>
+<artifact id="ValueSet/IdentificationService-IdentityStatus" key="ValueSet-IdentificationService-IdentityStatus" name="Identification Service — IdentityStatus (required)"/>
+<artifact id="StructureDefinition/IdentificationService-IdentityUpdateTopic" key="StructureDefinition-IdentificationService-IdentityUpdateTopic" name="Identification Service — IdentityUpdateTopic Profile"/>
+<artifact id="CodeSystem/IdentificationService-LinkMethodCategory" key="CodeSystem-IdentificationService-LinkMethodCategory" name="Identification Service — LinkMethodCategory"/>
+<artifact id="ValueSet/IdentificationService-LinkMethodCategory" key="ValueSet-IdentificationService-LinkMethodCategory" name="Identification Service — LinkMethodCategory (required)"/>
+<artifact id="CodeSystem/IdentificationService-LinkTypeCategory" key="CodeSystem-IdentificationService-LinkTypeCategory" name="Identification Service — LinkTypeCategory"/>
+<artifact id="ValueSet/IdentificationService-LinkTypeCategory" key="ValueSet-IdentificationService-LinkTypeCategory" name="Identification Service — LinkTypeCategory (required)"/>
+<artifact id="CodeSystem/IdentificationService-MatchQualityTier" key="CodeSystem-IdentificationService-MatchQualityTier" name="Identification Service — MatchQualityTier"/>
+<artifact id="ValueSet/IdentificationService-MatchQualityTier" key="ValueSet-IdentificationService-MatchQualityTier" name="Identification Service — MatchQualityTier (required)"/>
+<artifact id="CodeSystem/IdentificationService-NotificationEventCategory" key="CodeSystem-IdentificationService-NotificationEventCategory" name="Identification Service — NotificationEventCategory"/>
+<artifact id="ValueSet/IdentificationService-NotificationEventCategory" key="ValueSet-IdentificationService-NotificationEventCategory" name="Identification Service — NotificationEventCategory (required)"/>
+<artifact id="StructureDefinition/IdentificationService-NotificationSubscription" key="StructureDefinition-IdentificationService-NotificationSubscription" name="Identification Service — NotificationSubscription (Subscription) Profile"/>
+<artifact id="StructureDefinition/IdentificationService-PolicyDomain" key="StructureDefinition-IdentificationService-PolicyDomain" name="Identification Service — PolicyDomain (Organization) Profile"/>
+<artifact id="NamingSystem/IdentificationService-PolicyDomain" key="NamingSystem-IdentificationService-PolicyDomain" name="Identification Service — PolicyDomain Identifier Namespace"/>
+<artifact id="StructureDefinition/IdentificationService-RealWorldEntity" key="StructureDefinition-IdentificationService-RealWorldEntity" name="Identification Service — RealWorldEntity (Person) Profile"/>
+<artifact id="StructureDefinition/IdentificationService-ServiceMetadata" key="StructureDefinition-IdentificationService-ServiceMetadata" name="Identification Service — ServiceMetadata (Basic) Profile"/>
+<artifact id="CodeSystem/IdentificationService-UpdateMode" key="CodeSystem-IdentificationService-UpdateMode" name="Identification Service — UpdateMode"/>
+<artifact id="ValueSet/IdentificationService-UpdateMode" key="ValueSet-IdentificationService-UpdateMode" name="Identification Service — UpdateMode (required)"/>
+<artifact id="StructureDefinition/ext-lifecycleStatus" key="StructureDefinition-ext-lifecycleStatus" name="Identity Lifecycle Status Extension"/>
+<artifact id="SubscriptionTopic/IdentificationService-IdentityUpdate" key="SubscriptionTopic-IdentificationService-IdentityUpdate" name="Identity Update Notifications"/>
+<artifact id="StructureDefinition/ext-instanceDesignation" key="StructureDefinition-ext-instanceDesignation" name="Instance Designation Extension"/>
+<artifact id="StructureDefinition/ext-languagesSupported" key="StructureDefinition-ext-languagesSupported" name="Languages Supported Extension"/>
+<artifact id="StructureDefinition/ext-linkMethod" key="StructureDefinition-ext-linkMethod" name="Link Method Extension"/>
+<artifact id="StructureDefinition/ext-linkReason" key="StructureDefinition-ext-linkReason" name="Link Reason Extension"/>
+<artifact id="StructureDefinition/ext-linkTypeCategory" key="StructureDefinition-ext-linkTypeCategory" name="Link Type Category Extension"/>
+<artifact id="StructureDefinition/ext-notificationQualifier" key="StructureDefinition-ext-notificationQualifier" name="Notification Qualifier Extension"/>
+<artifact id="StructureDefinition/ext-populatedSignifierValues" key="StructureDefinition-ext-populatedSignifierValues" name="Populated Signifier Values Extension"/>
+<artifact id="StructureDefinition/ext-provenance" key="StructureDefinition-ext-provenance" name="Provenance Extension"/>
+<artifact id="StructureDefinition/ext-resourceTrigger" key="StructureDefinition-ext-resourceTrigger" name="Resource Trigger Extension"/>
+<artifact id="StructureDefinition/ext-schemaDefinition" key="StructureDefinition-ext-schemaDefinition" name="Schema Definition Extension"/>
+<artifact id="StructureDefinition/ext-version" key="StructureDefinition-ext-version" name="Service-Owned Version Extension"/>
+<artifact id="StructureDefinition/ext-supportedConcepts" key="StructureDefinition-ext-supportedConcepts" name="Supported Concepts Extension"/>
+<artifact id="StructureDefinition/ext-supportedDomains" key="StructureDefinition-ext-supportedDomains" name="Supported Domains Extension"/>
+<artifact id="StructureDefinition/ext-supportedEntityTypes" key="StructureDefinition-ext-supportedEntityTypes" name="Supported Entity Types Extension"/>
+<artifact id="StructureDefinition/ext-typeDesignation" key="StructureDefinition-ext-typeDesignation" name="Type Designation Extension"/>
+<artifact id="StructureDefinition/ext-validationRuleSet" key="StructureDefinition-ext-validationRuleSet" name="Validation Rule Set Extension"/>
+<artifact id="Basic/example-entityconcept-1" key="Basic-example-entityconcept-1" name="example-entityconcept-1"/>
+<artifact id="Basic/example-entitytype-1" key="Basic-example-entitytype-1" name="example-entitytype-1"/>
+<artifact id="Basic/example-entitytypeassignment-1" key="Basic-example-entitytypeassignment-1" name="example-entitytypeassignment-1"/>
+<artifact id="SubscriptionTopic/example-identityupdatetopic-1" key="SubscriptionTopic-example-identityupdatetopic-1" name="example-identityupdatetopic-1"/>
+<artifact id="Linkage/example-linkage-1" key="Linkage-example-linkage-1" name="example-linkage-1"/>
+<artifact id="Patient/example-patient-1" key="Patient-example-patient-1" name="example-patient-1"/>
+<artifact id="Person/example-person-1" key="Person-example-person-1" name="example-person-1"/>
+<artifact id="Organization/example-policydomain-1" key="Organization-example-policydomain-1" name="example-policydomain-1"/>
+<artifact id="Basic/example-servicemetadata-1" key="Basic-example-servicemetadata-1" name="example-servicemetadata-1"/>
+<artifact id="Subscription/example-subscription-1" key="Subscription-example-subscription-1" name="example-subscription-1"/>
+<page key="NA" name="(NA)"/>
+<page key="many" name="(many)"/>
+</specification>

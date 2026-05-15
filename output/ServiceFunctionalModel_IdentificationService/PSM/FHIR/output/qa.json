@@ -1,0 +1,16 @@
+{
+  "url" : "http://example.org/fhir/ImplementationGuide/hl7.fhir.eu.identificationservice",
+  "name" : "IdentificationServiceImplementationGuide",
+  "title" : "HL7 Identification Service FHIR R5 Implementation Guide",
+  "description" : "description",
+  "ig-date" : "2026-04-22",
+  "status" : "draft",
+  "package-id" : "hl7.fhir.eu.identificationservice",
+  "ig-ver" : "0.1.0",
+  "date" : "Wed, 06 May, 2026 10:58:37 +0200",
+  "dateISO8601" : "2026-05-06T10:58:37+02:00",
+  "exception" : "No Source directories to scan found",
+  "version" : "5.0.0",
+  "tool" : "5.0.0 (3)",
+  "maxMemory" : 1135050208
+}

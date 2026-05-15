@@ -4,9 +4,18 @@ nul
 tools/*.jar
 tools/publisher.jar
 tools/validator_cli.jar
+tools/*.exe
+tools/ruby/
 
 # FHIR validator cache (populated first time validator runs)
 .fhir/
 
 # PSM run artifacts (regenerated on every run)
 **/PSM/validator_report.json
+
+# IG Publisher build outputs (regenerated; large)
+**/PSM/IG_BUILD/output/
+**/PSM/IG_BUILD/temp/
+**/PSM/IG_BUILD/template/
+**/PSM/IG_BUILD/input-cache/
+**/PSM/IG_BUILD/publisher.log

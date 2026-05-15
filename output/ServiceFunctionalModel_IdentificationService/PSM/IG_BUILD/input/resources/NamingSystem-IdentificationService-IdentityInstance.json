@@ -1,0 +1,18 @@
+{
+  "resourceType": "NamingSystem",
+  "id": "IdentificationService-IdentityInstance",
+  "url": "http://example.org/fhir/NamingSystem/IdentificationService-IdentityInstance",
+  "name": "NS_IdentificationService_IdentityInstance",
+  "title": "Identification Service — IdentityInstance Identifier Namespace",
+  "status": "active",
+  "kind": "identifier",
+  "date": "2026-04-22",
+  "description": "NamingSystem declaring the identifier namespace used for service-assigned IdentityInstance identifiers (Patient.identifier slice minted by CreateIdentity).",
+  "uniqueId": [
+    {
+      "type": "uri",
+      "value": "http://example.org/fhir/sid/IdentificationService/IdentityInstance",
+      "preferred": true
+    }
+  ]
+}

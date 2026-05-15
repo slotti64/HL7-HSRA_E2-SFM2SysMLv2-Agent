@@ -1,0 +1,85 @@
+
+WARNING: Default file encoding is windows-1252 which may cause unexpected results.
+         To fix this issue, run this program with the parameter '-Dfile.encoding=UTF-8'
+         Future releases may not be able to run at all with encoding windows-1252
+
+FHIR IG Publisher Version 2.2.7 (Git# 46f94953d4dc). Built 2026-04-23T19:43:46.382Z (12 days old)   
+Detected Java version: 17.0.12 from C:\Program Files\Java\jdk-17 on Windows 11/amd64 (64bit). 4096MB available
+dir = C:\Users\slotti\Documents\GitHub\HL7-HSRA_E2-SFM2SysMLv2-Agent, path = C:\Users\slotti\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\slotti\bin;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\Common Files\Pulse Secure\VC142.CRT\X64;C:\Program Files (x86)\Common Files\Pulse Secure\VC142.CRT\X86;C:\Program Files (x86)\Groovy\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Graphviz 2.44.1\bin;C:\Users\slotti\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Program Files\PowerShell\7;C:\Users\slotti\AppData\Local\com.LangflowDesktop\uv;C:\Users\slotti\AppData\Local\Programs\Python\Python312\Scripts;C:\Users\slotti\AppData\Local\Programs\Python\Python312;C:\Users\slotti\AppData\Local\Programs\Python\Launcher;C:\Users\slotti\AppData\Local\Microsoft\WindowsApps;C:\Users\slotti\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\slotti\AppData\Local\GitHubDesktop\bin;C:\Users\slotti\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\slotti\AppData\Roaming\npm;C:\Users\slotti\AppData\Local\Pandoc;C:\Users\slotti\.local\bin;C:\Users\slotti\.azure-kubectl;C:\Users\slotti\.azure-kubelogin;C:\Users\slotti\AppData\Local\Microsoft\WinGet\Packages\Helm.Helm_Microsoft.Winget.Source_8wekyb3d8bbwe\windows-amd64;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\superpowers\5.0.7\bin;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\playwright\unknown\bin;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\frontend-design\unknown\bin;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\feature-dev\unknown\bin;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\context7\unknown\bin;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\commit-commands\unknown\bin;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\code-review\unknown\bin;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\claude-md-management\1.0.0\bin;C:\Users\slotti\.claude\plugins\cache\claude-plugins-official\claude-code-setup\1.0.0\bin
+Parameters: -ig output/ServiceFunctionalModel_IdentificationService/PSM/FHIR/ig.ini -no-sushi       
+Character encoding = windows-1252 / Cp1252                                                          
+Start Clock @ mercoledì 6 maggio 2026 10:58:37 Ora legale dell’Europa centrale (2026-05-06T10:58:37+02:00)
+                                                                                                    
+Build FHIR IG from C:\Users\slotti\Documents\GitHub\HL7-HSRA_E2-SFM2SysMLv2-Agent\output\ServiceFunctionalModel_IdentificationService\PSM\FHIR\ig.ini (00:00.130 / 00:00.130, 20Mb)
+API keys loaded from C:\Users\slotti\.fhir\fhir-settings.json                                        (00:00.004 / 00:00.134, 20Mb)
+Package Cache: C:\Users\slotti\.fhir\packages                                                        (00:00.004 / 00:00.139, 21Mb)
+Root directory: C:\Users\slotti\Documents\GitHub\HL7-HSRA_E2-SFM2SysMLv2-Agent\output\ServiceFunctionalModel_IdentificationService\PSM\FHIR (00:00.138 / 00:00.277, 21Mb)
+Load Template from hl7.fhir.template#current                                                         (00:00.705 / 00:00.983, 55Mb)
+[39mInstalling hl7.fhir.template#current to the package cache
+[0;39m[39m  Fetching:
+[0;39m[39m
+[0;39m[39mInstalling hl7.fhir.template#current
+[0;39m[39m done.
+[0;39m[39m loaded @ C:\Users\slotti\.fhir\packages\hl7.fhir.template#current
+[0;39m Load Template from hl7.base.template#current                                                        (00:06.489 / 00:07.473, 31Mb)
+[39mInstalling hl7.base.template#current to the package cache
+[0;39m[39m  Fetching:
+[0;39m[39m
+[0;39m[39mInstalling hl7.base.template#current
+[0;39m[39m done.
+[0;39m[39m loaded @ C:\Users\slotti\.fhir\packages\hl7.base.template#current
+[0;39m  Load Template from fhir2.base.template#current                                                     (00:01.578 / 00:09.051, 32Mb)
+[39mInstalling fhir2.base.template#current to the package cache
+[0;39m[39m  Fetching:
+[0;39m[39m
+[0;39m[39mInstalling fhir2.base.template#current
+[0;39m[39m done.
+[0;39m[39m loaded @ C:\Users\slotti\.fhir\packages\fhir2.base.template#current
+[0;39mScanning directory: C:\Users\slotti\Documents\GitHub\HL7-HSRA_E2-SFM2SysMLv2-Agent\output\ServiceFunctionalModel_IdentificationService\PSM\FHIR\template
+======================================================================
+Terminology Cache is at C:\Users\slotti\Documents\GitHub\HL7-HSRA_E2-SFM2SysMLv2-Agent\output\ServiceFunctionalModel_IdentificationService\PSM\FHIR\input-cache\txcache. 0 files in cache (00:15.970 / 00:25.022, 117Mb)
+Core Package hl7.fhir.r5.core#5.0.0                                                                  (00:00.002 / 00:25.024, 117Mb)
+Running Terminology Log: C:\Users\slotti\AppData\Local\Temp\ohfu-fhir-ig-12886809361385155888.html
+Connect to Terminology Server at http://tx.fhir.org                                                  (00:10.182 / 00:35.206, 605Mb)
+[39mInstalling hl7.fhir.pubpack#0.2.5 to the package cache
+[0;39m[39m  Fetching:
+[0;39m[39m
+[0;39m[39mInstalling hl7.fhir.pubpack#0.2.5
+[0;39m[39m done.
+[0;39m[39m loaded @ C:\Users\slotti\.fhir\packages\hl7.fhir.pubpack#0.2.5
+[0;39m[39mLoad Package hl7.fhir.pubpack#0.2.5
+[0;39m[39mLoad Package hl7.fhir.xver-extensions#0.1.0
+[0;39m[39mInstalling hl7.terminology.r5#7.1.0 to the package cache
+[0;39m[39m  Fetching:
+[0;39m[39m
+[0;39m[39mInstalling hl7.terminology.r5#7.1.0
+[0;39m[39m done.
+[0;39m[39m loaded @ C:\Users\slotti\.fhir\packages\hl7.terminology.r5#7.1.0
+[0;39m[39mLoad Package hl7.terminology.r5#7.1.0
+[0;39m[39mLoad Package hl7.fhir.uv.extensions.r5#5.2.0
+[0;39mDependency 'hl7.fhir.r5.core' has no id, so can't be referred to in markdown in the IG               (02:06.263 / 02:41.470, 439Mb)
+[39mLoad Package hl7.fhir.r5.core#5.0.0
+[0;39m[39mInstalling hl7.fhir.uv.tools.r5#1.1.2 to the package cache
+[0;39m[39m  Fetching:
+[0;39m[39m
+[0;39m[39mInstalling hl7.fhir.uv.tools.r5#1.1.2
+[0;39m[39m done.
+[0;39m[39m loaded @ C:\Users\slotti\.fhir\packages\hl7.fhir.uv.tools.r5#1.1.2
+[0;39m[39mLoad Package hl7.fhir.uv.tools.r5#1.1.2
+[0;39mInitialization complete                                                                              (00:16.915 / 02:58.385, 1Gb)
+Load IG                                                                                              (00:00.001 / 02:58.387, 1Gb)
+Load Translations                                                                                    (00:00.142 / 02:58.530, 1Gb)
+Load Content                                                                                         (00:00.001 / 02:58.531, 1Gb)
+Using en as the default narrative language. (Implementation Guide param i18n-default-lang)           (00:00.056 / 02:58.587, 1Gb)
+Publishing Content Failed: No Source directories to scan found                                       (00:04.285 / 03:02.872, 1Gb)
+                                                                                                     (00:00.001 / 03:02.874, 1Gb)
+Use -? to get command line help                                                                      (00:00.001 / 03:02.875, 1Gb)
+                                                                                                     (00:00.001 / 03:02.876, 1Gb)
+Stack Dump (for debugging):                                                                          (00:00.001 / 03:02.877, 1Gb)
+org.hl7.fhir.exceptions.FHIRException: No Source directories to scan found
+	at org.hl7.fhir.igtools.publisher.SimpleFetcher.scan(SimpleFetcher.java:342)
+	at org.hl7.fhir.igtools.publisher.PublisherIGLoader.loadResources(PublisherIGLoader.java:2967)
+	at org.hl7.fhir.igtools.publisher.PublisherIGLoader.load(PublisherIGLoader.java:2067)
+	at org.hl7.fhir.igtools.publisher.Publisher.createIg(Publisher.java:387)
+	at org.hl7.fhir.igtools.publisher.Publisher.execute(Publisher.java:233)
+	at org.hl7.fhir.igtools.publisher.Publisher.main(Publisher.java:1600)

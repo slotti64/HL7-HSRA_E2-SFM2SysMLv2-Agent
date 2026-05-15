@@ -1,0 +1,111 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IdentificationService-IdentityLink",
+  "url": "http://example.org/fhir/StructureDefinition/IdentificationService-IdentityLink",
+  "name": "IdentificationServiceIdentityLinkProfile",
+  "title": "Identification Service — IdentityLink (Linkage) Profile",
+  "status": "draft",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Linkage",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Linkage",
+  "fhirVersion": "5.0.0",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Linkage",
+        "path": "Linkage",
+        "short": "IdentityLink — an equivalence or deprecation relationship between IdentityInstances",
+        "definition": "Linkage-derived profile representing IdentityLinks (peer-links and merge-deprecations) between IdentityInstances managed by the Identification Service."
+      },
+      {
+        "id": "Linkage.extension:linkMethod",
+        "path": "Linkage.extension",
+        "sliceName": "linkMethod",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-linkMethod"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Linkage.extension:linkReason",
+        "path": "Linkage.extension",
+        "sliceName": "linkReason",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-linkReason"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Linkage.extension:linkTypeCategory",
+        "path": "Linkage.extension",
+        "sliceName": "linkTypeCategory",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-linkTypeCategory"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Linkage.extension:provenance",
+        "path": "Linkage.extension",
+        "sliceName": "provenance",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/ext-provenance"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Linkage.author",
+        "path": "Linkage.author",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Linkage.item",
+        "path": "Linkage.item",
+        "min": 2,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Linkage.item.resource",
+        "path": "Linkage.item.resource",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://example.org/fhir/StructureDefinition/IdentificationService-IdentityInstance"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
