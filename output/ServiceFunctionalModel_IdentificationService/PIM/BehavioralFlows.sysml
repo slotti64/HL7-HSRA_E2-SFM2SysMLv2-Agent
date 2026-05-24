@@ -1,4 +1,4 @@
-package PIM_IS {
+.package PIM_IS {
 
     package BehavioralFlows {
         doc /* PIM-level Behavioral Flows for the HL7 Identification Service (IS).

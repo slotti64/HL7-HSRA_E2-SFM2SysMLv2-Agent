@@ -13,12 +13,13 @@ The new Edition take in account the emerging LLM tecnology. Two aspect are relev
 - Despite the vibing hype: "The reliability of a prompt chain is highly dependent on the integrity of the data passed between steps. If the output of one prompt is ambiguous or poorly formatted, the subsequent prompt may fail due to faulty input. To mitigate this, specifying a structured output format ... this is crucial." (Antonio Gulli, Agentic Design Patterns, Springer, 2025).
 The rivial vibecoding request-response pattern in a chat is not enough if we need to build a real system, not just get a simple answer for a simple application; structured languages are fundamental.
 
-So, the basic idea behind HSRA E2 is that LLMs imply a fundamental reorientation in the way architectures can be built and standards can be used
+So, the basic idea behind HSRA E2 is that LLMs imply a fundamental reorientation in the way architectures can be built and standards can be used.
+
+The used approach, even if designed independently, is consistent with the so-called Long-Running Agents (Addy Osmani).
 
 ## Project site
 
-https://tinyurl.com/28kcwm7e
-
+https://shorturl.at/QNbqs
 
 ## status
 
