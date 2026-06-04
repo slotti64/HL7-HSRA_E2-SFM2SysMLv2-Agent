@@ -1,5 +1,7 @@
 package CIM_IS {
 
+  public import ScalarValues::*;
+  
     package CIM_Requirements {
 
         package ComplianceRequirements {

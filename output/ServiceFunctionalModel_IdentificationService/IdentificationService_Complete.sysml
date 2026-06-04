@@ -1,5 +1,6 @@
 package CIM_IS {
     private import RequirementDerivation::*;
+    public import ScalarValues::*;
 
     package BusinessDomain {
         doc /* CIM-level Business Domain Ontology for the HL7 Identification Service (IS).
@@ -398,7 +399,7 @@ package CIM_IS {
             doc /* An EntityType classifies exactly one EntityConcept.
                  * Multiple EntityTypes may classify the same concept.
                  * [ST-073, meta-model Section 4.2] */
-            end entityType : EntityType [0..*];
+            end entityType : EntityType [1];
             end concept : EntityConcept [1];
         }
 
@@ -407,14 +408,14 @@ package CIM_IS {
                  * each customizing it for a specific PolicyDomain.
                  * [ST-074, meta-model Section 4.2] */
             end entityType : EntityType [1];
-            end assignment : EntityTypeAssignment [0..*];
+            end assignment : EntityTypeAssignment [1];
         }
 
         connection def IsAppliedTo {
             doc /* An EntityTypeAssignment applies within exactly one PolicyDomain.
                  * A PolicyDomain may have multiple assignments.
                  * [ST-074, meta-model Section 4.2] */
-            end assignment : EntityTypeAssignment [0..*];
+            end assignment : EntityTypeAssignment [1];
             end domain : PolicyDomain [1];
         }
 
@@ -422,7 +423,7 @@ package CIM_IS {
             doc /* An IdentityInstance is governed by exactly one EntityTypeAssignment,
                  * which determines its EntityType and PolicyDomain scope.
                  * [ST-076, meta-model Section 4.2] */
-            end instance : IdentityInstance [0..*];
+            end instance : IdentityInstance [1];
             end assignment : EntityTypeAssignment [1];
         }
 
@@ -430,7 +431,7 @@ package CIM_IS {
             doc /* The source identity instance in a link relationship.
                  * In a merge, this is the deprecated identity.
                  * [ST-077, meta-model Section 4.2] */
-            end link : IdentityLink [0..*];
+            end link : IdentityLink [1];
             end source : IdentityInstance [1];
         }
 
@@ -438,7 +439,7 @@ package CIM_IS {
             doc /* The target identity instance in a link relationship.
                  * In a merge, this is the surviving identity.
                  * [ST-077, meta-model Section 4.2] */
-            end link : IdentityLink [0..*];
+            end link : IdentityLink [1];
             end target : IdentityInstance [1];
         }
 
@@ -447,22 +448,22 @@ package CIM_IS {
         connection def SubscriptionDomainFilter {
             doc /* Optional PolicyDomain filter for a notification subscription.
                  * [ST-156] */
-            end subscription : NotificationSubscription [0..*];
-            end domain : PolicyDomain [0..1];
+            end subscription : NotificationSubscription [1];
+            end domain : PolicyDomain [1];
         }
 
         connection def SubscriptionTypeFilter {
             doc /* Optional EntityType filter for a notification subscription.
                  * [ST-156] */
-            end subscription : NotificationSubscription [0..*];
-            end entityType : EntityType [0..1];
+            end subscription : NotificationSubscription [1];
+            end entityType : EntityType [1];
         }
 
         connection def SubscriptionInstanceFilter {
             doc /* Optional specific IdentityInstance filter for a notification subscription.
                  * [ST-156] */
-            end subscription : NotificationSubscription [0..*];
-            end instance : IdentityInstance [0..1];
+            end subscription : NotificationSubscription [1];
+            end instance : IdentityInstance [1];
         }
 
         /* --- Service Metadata Support Associations --- */
@@ -470,22 +471,22 @@ package CIM_IS {
         connection def SupportsDomain {
             doc /* Identifies the PolicyDomains managed by a service instance.
                  * [ST-211] */
-            end svcMetadata : ServiceMetadata [0..*];
-            end domain : PolicyDomain [1..*];
+            end svcMetadata : ServiceMetadata [1];
+            end domain : PolicyDomain [1];
         }
 
         connection def SupportsEntityType {
             doc /* Identifies the EntityTypes recognized by a service instance.
                  * [ST-211] */
-            end svcMetadata : ServiceMetadata [0..*];
-            end entityType : EntityType [1..*];
+            end svcMetadata : ServiceMetadata [1];
+            end entityType : EntityType [1];
         }
 
         connection def SupportsConcept {
             doc /* Identifies the EntityConcepts recognized by a service instance.
                  * [ST-211] */
-            end svcMetadata : ServiceMetadata [0..*];
-            end concept : EntityConcept [1..*];
+            end svcMetadata : ServiceMetadata [1];
+            end concept : EntityConcept [1];
         }
 
         /* ===================================================================

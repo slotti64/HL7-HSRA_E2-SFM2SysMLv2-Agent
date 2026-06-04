@@ -33,16 +33,16 @@ A structured table in Markdown format with columns: ID, Source Text (excerpt), C
 
 Example:
 
-| ID     | Source Text (excerpt)                | Category              | Cross-Refs | Notes         |
-|--------|--------------------------------------|-----------------------|------------|---------------|
-| ST-001 | "The citizen submits..."             | CAPABILITY            | ST-002, ST-003 |           |
-| ST-002 | "Name, surname, fiscal code..."      | DOMAIN_CONCEPT        | ST-001     |               |
-| ST-003 | "Eligibility verification..."        | RULE                  | ST-001     |               |
-| ST-004 | "The system shall..."                | REQUIREMENT_FUNCTIONAL| ST-001     |               |
-| ST-005 | "Within 30 days..."                  | REQUIREMENT_QUALITY   | ST-004     |               |
-| ST-006 | "In accordance with GDPR..."        | REQUIREMENT_COMPLIANCE|            | EU Reg. 679/16|
-| ST-007 | "Application status..."              | DOMAIN_CONCEPT        | ST-001     | Enumeration   |
-| ST-008 | (unclear passage)                    | UNCLEAR               |            | Needs clarif. |
+| ID     | Source Text (excerpt)                | Category              | Cross-Refs     | Notes         |
+|--------|--------------------------------------|-----------------------|----------------|---------------|
+| ST-001 | "The citizen submits..."             | CAPABILITY            | ST-002, ST-003 |               |
+| ST-002 | "Name, surname, fiscal code..."      | DOMAIN_CONCEPT        | ST-001         |               |
+| ST-003 | "Eligibility verification..."        | RULE                  | ST-001         |               |
+| ST-004 | "The system shall..."                | REQUIREMENT_FUNCTIONAL| ST-001         |               |
+| ST-005 | "Within 30 days..."                  | REQUIREMENT_QUALITY   | ST-004         |               |
+| ST-006 | "In accordance with GDPR..."         | REQUIREMENT_COMPLIANCE|                | EU Reg. 679/16|
+| ST-007 | "Application status..."              | DOMAIN_CONCEPT        | ST-001         | Enumeration   |
+| ST-008 | (unclear passage)                    | UNCLEAR               |                | Needs clarif. |
 
 ### Artifact 2: Cross-Reference Map
 
