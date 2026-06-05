@@ -24,3 +24,5 @@ https://shorturl.at/QNbqs
 ## status
 
 Alpha 1
+
+[License](https://github.com/slotti64/HL7-HSRA_E2-SysMLv2Repository/blob/main/LICENSE)
