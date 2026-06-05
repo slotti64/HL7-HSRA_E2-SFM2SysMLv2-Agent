@@ -11,7 +11,8 @@ The new edition takes into account the emerging LLM technology. Two aspects are 
  - When we talk about AI-assisted software engineering or specification-driven development, we are emphasizing that in an LLM world, structurally, architecture comes before code (spec→arch→code). It may seem obvious, but it has not been the case in the real world until now.
  - Despite the vibing hype: "The reliability of a prompt chain is highly dependent on the integrity of the data passed between steps. If the output of one prompt is ambiguous or poorly formatted, the subsequent prompt may fail due to faulty input. To mitigate this, specifying a structured output format ... this is crucial." (Antonio Gulli, Agentic Design Patterns, Springer, 2025).
 
-The trivial *vibecoding* request-response pattern in a chat is not enough if we need to build a real system, not just get a simple answer for a simple application; so, structured languages are fundamental.
+The trivial *vibecoding* request-response pattern in a chat is not enough if we need to build real, sound, and maintainable systems, not just get a simple answer for a simple application/prototype. 
+In this context, structured languages are first-class citizens in Agent implementations.
 
 The basic idea behind HSRA E2 is that LLMs imply a fundamental reorientation in the way architectures can be built and standards can be used.
 
