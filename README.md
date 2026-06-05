@@ -26,7 +26,7 @@ Here, the logic centers on designing the set of harnesses as a **logical cage** 
 
 ## Project site
 
-https://shorturl.at/QNbqs
+[HL7 Health Services Reference Architecture (HL7-HSRA)](https://confluence.hl7.org/spaces/SOA/pages/35720450/Health+Services+Reference+Architecture+HL7-HSRA)
 
 ## status
 
