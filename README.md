@@ -26,8 +26,6 @@ The model’s structure follows the classical CIM-PIM-PSM schema derived from MD
 However, it must be understood that the mechanics of model transformation is completely different from the classical, deterministic, MDA. Here, the logic is centered on the design of the set of harnesses as a logical 
 cage around LLMs.
 
-<img width="3975" height="243" alt="immagine" src="https://github.com/user-attachments/assets/0a037527-8109-4255-9999-86333e9e7271" />
-
 ## Project site
 
 https://shorturl.at/QNbqs
