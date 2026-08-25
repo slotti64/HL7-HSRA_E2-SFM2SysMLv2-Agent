@@ -93,8 +93,8 @@ In this context, a local Domain Entity identifier is any identifier that has bee
 
 Where the distinction is relevant, the remainder of the document will use the terms as follows:
 
-* IS – Identification Service that operates in a single domain only
-* XIS – where multiple domains are recognized and managed.
+* IS ï¿½ Identification Service that operates in a single domain only
+* XIS ï¿½ where multiple domains are recognized and managed.
 
 In other sections, which refer to general capabilities of the specification or overall description, IS will be used.
 
@@ -122,13 +122,13 @@ Note that the term Hospital Information System (HIS) is used as a generic term f
 
 ## Primary Actors
 
-* Adam Everyman – a patient
-* Robert (Bob) Smith – a patient
-* Eric Entry – a hospital registration clerk
-* Eve Everywoman - Patient (maiden name Evelyn Smith) Evelyn Smith – another patient who is not Eve Everywoman Carol Clerk – a hospital registration clerk
-* Clarence Barton – a hospital pre-op nurse
-* Nancy Nightingale – a discharge nurse
-* Bill Beaker – a laboratory clerk
+* Adam Everyman - a patient
+* Robert (Bob) Smith - a patient
+* Eric Entry - a hospital registration clerk
+* Eve Everywoman - Patient (maiden name Evelyn Smith) Evelyn Smith - another patient who is not Eve Everywoman Carol Clerk - a hospital registration clerk
+* Clarence Barton - a hospital pre-op nurse
+* Nancy Nightingale - a discharge nurse
+* Bill Beaker - a laboratory clerk
 
 ## Primary Scenarios
 
@@ -412,7 +412,7 @@ Carol -> Carol : reviews Alias
 
 Note left
 
-Carol Decided one  Everywooman's
+Carol Decided one ï¿½Everywooman's
 
 alias - Evelyn Smith, was mistakenly
 
@@ -666,7 +666,7 @@ IS\_Moon --> Carol: Return Eve
 
 #### Link entities across regions within an organization
 
-Adam Everyman is admitted to Jupiter Hospital, which is in the North region of Solar System Healthcare. Eric Entry checks for Adam Everyman on their HIS system, but he is not found. Adam Everyman then informs him that he is a Solar System patient in another area of the country, so Eric Entry requests the XIS to search for the whole of Solar System Healthcare. Adam Everyman's details from the East region are found by the National XIS and his details are returned. A new identifier is created for Adam Everyman in the North region so that the HIS can process his record, and a link is created in the Solar System's master XIS to tie Adam Everyman's new regional identifier to the master identifier for Solar System. Note – the Master XIS could hold a duplicate of all regions' entity properties or pass the request to retrieve them to the East region IS, this is an implementation choice.
+Adam Everyman is admitted to Jupiter Hospital, which is in the North region of Solar System Healthcare. Eric Entry checks for Adam Everyman on their HIS system, but he is not found. Adam Everyman then informs him that he is a Solar System patient in another area of the country, so Eric Entry requests the XIS to search for the whole of Solar System Healthcare. Adam Everyman's details from the East region are found by the National XIS and his details are returned. A new identifier is created for Adam Everyman in the North region so that the HIS can process his record, and a link is created in the Solar System's master XIS to tie Adam Everyman's new regional identifier to the master identifier for Solar System. Note ï¿½ the Master XIS could hold a duplicate of all regions' entity properties or pass the request to retrieve them to the East region IS, this is an implementation choice.
 
 @startuml
 
@@ -712,23 +712,23 @@ HIS\_Jupiter --> Eric : Return Adam
 
 This section gives the functional description of the interfaces for this service.
 
-• Identification Management Functions: Provides capabilities for manipulation of Entity Identifiers and properties.
+ï¿½ Identification Management Functions: Provides capabilities for manipulation of Entity Identifiers and properties.
 
-• Query Functions: Provides query capabilities for discovering entity identifiers and properties and metadata discovery.
+ï¿½ Query Functions: Provides query capabilities for discovering entity identifiers and properties and metadata discovery.
 
 Additional interfaces may be defined in technical specifications for system or administrative functionality such as Service Management and/or Metadata Management.
 
 The following general notes should be borne in mind when reviewing the capability definitions:
 
-• The functions specified in this document are only intended to use demographic data, as these functions are meant to find the identity of the entity we are looking for. Data about the entity itself is entered in the individual systems, which collaborate with an Entity Information system supported by the regional Enterprise. However, this is NOT an enforced restriction in that the capabilities are defined to consume and produce a very generic information structure. The efficacy of using very complex information structures for the purpose of identification is left to Technical Specifications and Implementations.
+ï¿½ The functions specified in this document are only intended to use demographic data, as these functions are meant to find the identity of the entity we are looking for. Data about the entity itself is entered in the individual systems, which collaborate with an Entity Information system supported by the regional Enterprise. However, this is NOT an enforced restriction in that the capabilities are defined to consume and produce a very generic information structure. The efficacy of using very complex information structures for the purpose of identification is left to Technical Specifications and Implementations.
 
-• The means for returning informational and exception messages (above and beyond any requested business content) is left to Technical Specifications.
+ï¿½ The means for returning informational and exception messages (above and beyond any requested business content) is left to Technical Specifications.
 
-• The Service assumes that the client can provide and consume the semantic signifier. A means needs to be provided by which a potential client can discover the signifiers that an instance supports. This could either be provided by a reflection-style interface operation or by registration in a separate Service Registry.
+ï¿½ The Service assumes that the client can provide and consume the semantic signifier. A means needs to be provided by which a potential client can discover the signifiers that an instance supports. This could either be provided by a reflection-style interface operation or by registration in a separate Service Registry.
 
-• Security is not explicitly referenced in this specification. It is assumed to be handled by a separate infrastructure. There is an assumed precondition on all operations that the caller is appropriately authenticated (and possibly authorized according to domain regulations. Security approaches are not specific to any domain service; they are really orthogonal.
+ï¿½ Security is not explicitly referenced in this specification. It is assumed to be handled by a separate infrastructure. There is an assumed precondition on all operations that the caller is appropriately authenticated (and possibly authorized according to domain regulations. Security approaches are not specific to any domain service; they are really orthogonal.
 
-• In any functions that involves matching, two-tiered match threshold criteria may be used, which identify a "definite match" not requiring human intervention, and a "presumptive match", requiring further verification. Response quality could be used to determine which thresholds were met. Note that these values can be composite data structures, numerical, ontological, etc., and would, in general, be implementation-configurable.
+ï¿½ In any functions that involves matching, two-tiered match threshold criteria may be used, which identify a "definite match" not requiring human intervention, and a "presumptive match", requiring further verification. Response quality could be used to determine which thresholds were met. Note that these values can be composite data structures, numerical, ontological, etc., and would, in general, be implementation-configurable.
 
 ## Identification and Cross-Reference Service Meta-model
 
@@ -742,97 +742,97 @@ title Class Diagram [ IS Metamodel ]
 
 class EntityConcept {
 
-    -id : String
+ï¿½ ï¿½ -id : String
 
-    -name : String
+ï¿½ ï¿½ -name : String
 
-    -description : String
+ï¿½ ï¿½ -description : String
 
-    -versionId : String
+ï¿½ ï¿½ -versionId : String
 
 }
 
 class PolicyDomain {
 
-    -id : String
+ï¿½ ï¿½ -id : String
 
-    -name : String
+ï¿½ ï¿½ -name : String
 
-    -description : String
+ï¿½ ï¿½ -description : String
 
-    -versionId : String
+ï¿½ ï¿½ -versionId : String
 
-    -status : statusCode
+ï¿½ ï¿½ -status : statusCode
 
-    -forCrossReference : Boolean [0..1]
+ï¿½ ï¿½ -forCrossReference : Boolean [0..1]
 
-    -languageSupported : languageCode [0..\*]
+ï¿½ ï¿½ -languageSupported : languageCode [0..\*]
 
-    -defaultLanguageId : languageCode
+ï¿½ ï¿½ -defaultLanguageId : languageCode
 
 }
 
 class EntityType {
 
-    -id : String
+ï¿½ ï¿½ -id : String
 
-    -name : String
+ï¿½ ï¿½ -name : String
 
-    -description : String
+ï¿½ ï¿½ -description : String
 
-    -status : statusCode
+ï¿½ ï¿½ -status : statusCode
 
-    -versionId : String
+ï¿½ ï¿½ -versionId : String
 
-    -schemaDefinition : String
+ï¿½ ï¿½ -schemaDefinition : String
 
-    -validationRuleSet : String
+ï¿½ ï¿½ -validationRuleSet : String
 
 }
 
 class EntityTypeAssignment {
 
-    -id : String
+ï¿½ ï¿½ -id : String
 
-    -status : statusCode
+ï¿½ ï¿½ -status : statusCode
 
-    -versionId : String
+ï¿½ ï¿½ -versionId : String
 
-    -constrainedSchemaDefinition : String [0..1]
+ï¿½ ï¿½ -constrainedSchemaDefinition : String [0..1]
 
-    -constrainedValidationRuleSet : String [0..1]
+ï¿½ ï¿½ -constrainedValidationRuleSet : String [0..1]
 
 }
 
 class IdentityLink {
 
-    -linkType : LinkTypeCode
+ï¿½ ï¿½ -linkType : LinkTypeCode
 
-    -linkMethod : LinkMethodCode [0..1]
+ï¿½ ï¿½ -linkMethod : LinkMethodCode [0..1]
 
-    -reason : String [0..1]
+ï¿½ ï¿½ -reason : String [0..1]
 
-    -provenanceInformation : String [0..1]
+ï¿½ ï¿½ -provenanceInformation : String [0..1]
 
 }
 
 class IdentityInstance {
 
-    -id : String
+ï¿½ ï¿½ -id : String
 
-    -versionId : String
+ï¿½ ï¿½ -versionId : String
 
-    -status : statusCode
+ï¿½ ï¿½ -status : statusCode
 
-    -populatedSchemaValue : String
+ï¿½ ï¿½ -populatedSchemaValue : String
 
 }
 
 ' Relationships
 
-EntityType  "0..\*" --  "1" EntityConcept : classifies >
+EntityType ï¿½"0..\*" -- ï¿½"1" EntityConcept : classifies >
 
-EntityTypeAssignment "0..\*" -- "1"  PolicyDomain : isAppliedTo >
+EntityTypeAssignment "0..\*" -- "1" ï¿½PolicyDomain : isAppliedTo >
 
 EntityType "1" -- "0..\*" EntityTypeAssignment
 
@@ -850,17 +850,17 @@ This is similar to the concept of security domains and identifies the scope of u
 
 Attribute descriptions:
 
-• **id** – unique identifier of the Policy Domain
-• **name** – the name of the PolicyDomain
-• **description** – a description of the PolicyDomain
-• **versionId** – the version of the domain (Policy Domains can be merged, spitted, etc. This is represented as a String datatype in the diagram, but the representation of a versioning scheme is explicitly intended to be delegated to an implementation-dependent version concept as opposed to a simple character string - with a default "flattening" to a string to support simple implementation.
-• **status** – the status of the PolicyDomain. Indicates whether the PolicyDomain can be used.
+ï¿½ **id** ï¿½ unique identifier of the Policy Domain
+ï¿½ **name** ï¿½ the name of the PolicyDomain
+ï¿½ **description** ï¿½ a description of the PolicyDomain
+ï¿½ **versionId** ï¿½ the version of the domain (Policy Domains can be merged, spitted, etc. This is represented as a String datatype in the diagram, but the representation of a versioning scheme is explicitly intended to be delegated to an implementation-dependent version concept as opposed to a simple character string - with a default "flattening" to a string to support simple implementation.
+ï¿½ **status** ï¿½ the status of the PolicyDomain. Indicates whether the PolicyDomain can be used.
 
-• **forCrossReference** (optional) – indicates whether this PolicyDomain can be used in cross-references of Entities across other Domains
+ï¿½ **forCrossReference** (optional) ï¿½ indicates whether this PolicyDomain can be used in cross-references of Entities across other Domains
 
-• **languagesSupported**(optional)– identifies the languages that are supported in the domain
+ï¿½ **languagesSupported**(optional)ï¿½ identifies the languages that are supported in the domain
 
-• **defaultLanguage** – the default language supported in the domain
+ï¿½ **defaultLanguage** ï¿½ the default language supported in the domain
 
 ### EntityConcept
 
@@ -868,11 +868,11 @@ This specifies a concept or "category of information" that may be supported in a
 
 Attribute descriptions:
 
-• **id** – unique identifier of an Entity Concept
-• **name** – the name of the Entity Concept
-• **description** – a description of the Entity Concept
+ï¿½ **id** ï¿½ unique identifier of an Entity Concept
+ï¿½ **name** ï¿½ the name of the Entity Concept
+ï¿½ **description** ï¿½ a description of the Entity Concept
 
-• **versionId** – the version of the Entity Concept
+ï¿½ **versionId** ï¿½ the version of the Entity Concept
 
 Future versions of this specification may allow additional layers, providing a hierarchical classification scheme. From a meta-model perspective, this would simply mean adding a recursive relationship, but due to the potential implementation complexities, this is not included in this version.
 
@@ -882,18 +882,18 @@ This identifies a specific "type" of entity that an IS supports at the level of 
 
 Attribute descriptions:
 
-• **id** – unique identifier of the Entity Type
-• **name** – the name of the Entity Type
+ï¿½ **id** ï¿½ unique identifier of the Entity Type
+ï¿½ **name** ï¿½ the name of the Entity Type
 
-• **description**– a description of the Entity Type
+ï¿½ **description**ï¿½ a description of the Entity Type
 
-• **status** – the status of the Entity Type. Indicates whether the Entity Type can be used, e.g. whether new entities of the type can be created.
+ï¿½ **status** ï¿½ the status of the Entity Type. Indicates whether the Entity Type can be used, e.g. whether new entities of the type can be created.
 
-• **versionId** – allows for maintaining a history
+ï¿½ **versionId** ï¿½ allows for maintaining a history
 
-• **schemaDefinition** – contains the actual definition of the data items in the structure
+ï¿½ **schemaDefinition** ï¿½ contains the actual definition of the data items in the structure
 
-• **validationRuleSet** – defines declarative rules for validating the defined schema.
+ï¿½ **validationRuleSet** ï¿½ defines declarative rules for validating the defined schema.
 
 ### EntityTypeAssignment
 
@@ -901,13 +901,13 @@ This allows the definition rules for EntityTypes (Semantic Signifiers) to be var
 
 Attribute descriptions:
 
-• **id** – unique identifier of the assignment
-• **status** – the status of the Assignment. Indicates whether it is currently in use for the EntityType.
+ï¿½ **id** ï¿½ unique identifier of the assignment
+ï¿½ **status** ï¿½ the status of the Assignment. Indicates whether it is currently in use for the EntityType.
 
-• **versionId** – identifier of the version of the assignment
-• **constrainedSchemaDefinition** (optional) – optional constrained version of the definition of the data items in the structure (May only further constrain those defined for the SemanticSignifier)
+ï¿½ **versionId** ï¿½ identifier of the version of the assignment
+ï¿½ **constrainedSchemaDefinition** (optional) ï¿½ optional constrained version of the definition of the data items in the structure (May only further constrain those defined for the SemanticSignifier)
 
-• **constrainedValidationRuleSet** (optional) – optional declarative rules for validating the defined schema for use in specific Policy Domains, where different from the default for the SemanticSignifier (26As an example, two different Policy Domains can have different validation rules about patient identification: e.g. one can accept id from a driver licence without a provided social security number and another Domain can reject validation without a valid SSN id. In another example, from a devices scenario, one Domain can accept a device registration only if all the properties of Entity Type are compiled while another Domain can accept some properties as optional)
+ï¿½ **constrainedValidationRuleSet** (optional) ï¿½ optional declarative rules for validating the defined schema for use in specific Policy Domains, where different from the default for the SemanticSignifier (26As an example, two different Policy Domains can have different validation rules about patient identification: e.g. one can accept id from a driver licence without a provided social security number and another Domain can reject validation without a valid SSN id. In another example, from a devices scenario, one Domain can accept a device registration only if all the properties of Entity Type are compiled while another Domain can accept some properties as optional)
 
 ### IdentityInstance
 
@@ -915,13 +915,13 @@ Represents the actual instance entries in IS. These are always of a specific Ent
 
 Attribute descriptions:
 
-• **id** – unique identifier of the Identity (see note in Section4.3 below)
+ï¿½ **id** ï¿½ unique identifier of the Identity (see note in Section4.3 below)
 
-• **versionId** – identifies the Version of the IdentityInstance
+ï¿½ **versionId** ï¿½ identifies the Version of the IdentityInstance
 
-• **status** – status of the Identity.
+ï¿½ **status** ï¿½ status of the Identity.
 
-• **populatedSchemaValues** – the actual populated information schema. It's the populated Entity Type (Semantic Signifier) for the specific IdentityInstance.
+ï¿½ **populatedSchemaValues** ï¿½ the actual populated information schema. It's the populated Entity Type (Semantic Signifier) for the specific IdentityInstance.
 
 ### IdentityLink
 
@@ -929,13 +929,13 @@ Allows for linking and merging of identities. The link type would indicate a lin
 
 Attribute descriptions:
 
-• **linkType** – indicates whether the identities are linked as active "peers" or whether one is deprecated as in a merge.
+ï¿½ **linkType** ï¿½ indicates whether the identities are linked as active "peers" or whether one is deprecated as in a merge.
 
-• **provenanceInformation** (optional) – a placeholder structure for administrative information relating to linking/unlinking/merging/unmerging when applied manually
+ï¿½ **provenanceInformation** (optional) ï¿½ a placeholder structure for administrative information relating to linking/unlinking/merging/unmerging when applied manually
 
-• **linkMethod** (optional) – a coded value providing information on how the link was made.
+ï¿½ **linkMethod** (optional) ï¿½ a coded value providing information on how the link was made.
 
-• **Reason** (optional) – a coded and/or free-form text field identifying the reason for making the link.
+ï¿½ **Reason** (optional) ï¿½ a coded and/or free-form text field identifying the reason for making the link.
 
 ## Model Notes
 
@@ -943,15 +943,15 @@ The above model offers significant implementation flexibility. It is recognized 
 
 ### General Notes
 
-• Data types on attributes in the model itself are only indicative and are not intended as a constraint on technical specifications. Implementations of data types in metadata should use ISO 21090 data types.
+ï¿½ Data types on attributes in the model itself are only indicative and are not intended as a constraint on technical specifications. Implementations of data types in metadata should use ISO 21090 data types.
 
-• Identifiers have been included at all levels to allow for unique identification as needed by the technical specification, but these may not be required on several of the classes for implementation
+ï¿½ Identifiers have been included at all levels to allow for unique identification as needed by the technical specification, but these may not be required on several of the classes for implementation
 
-• Note also that in this specification, "identifying information" is any set of attributes (partially populated semantic signifier) that can be used singly or together to identify an entity (even approximately). An "identifier" is a data item or structure used to provide a unique identification.
+ï¿½ Note also that in this specification, "identifying information" is any set of attributes (partially populated semantic signifier) that can be used singly or together to identify an entity (even approximately). An "identifier" is a data item or structure used to provide a unique identification.
 
-• Explicit "versionIds" have been included in the meta-model. They have also been included in the function inputs and outputs for the control classes (PolicyDomain and EntityType). These should be seen as "optional" in the sense that the typical implementable operations will work with "current" versions in most cases and allow these as default settings (i.e. not explicitly input).
+ï¿½ Explicit "versionIds" have been included in the meta-model. They have also been included in the function inputs and outputs for the control classes (PolicyDomain and EntityType). These should be seen as "optional" in the sense that the typical implementable operations will work with "current" versions in most cases and allow these as default settings (i.e. not explicitly input).
 
-• Status code set for Identities is undefined in this specification. It is explicitly stated below that these are left to the technical specification. The values need to be determined by the requirements for maintaining metadata. The primary reason is that this Service is designed to cater for identification of many different kinds of entities, and these may have different state models. The basic "default" minimum assumption is that the concepts of "active" and "inactive" states are covered, so inactive identities would not appear in normal searches or allow linking or merging. However, these restrictions are seen as realm or organization-specific configuration settings. However, explicit status code values for IS metadata are defined and defaulted, explicitly using "active" and "inactive". However, the ability to accommodate locally mandated status sets and rules is assumed.
+ï¿½ Status code set for Identities is undefined in this specification. It is explicitly stated below that these are left to the technical specification. The values need to be determined by the requirements for maintaining metadata. The primary reason is that this Service is designed to cater for identification of many different kinds of entities, and these may have different state models. The basic "default" minimum assumption is that the concepts of "active" and "inactive" states are covered, so inactive identities would not appear in normal searches or allow linking or merging. However, these restrictions are seen as realm or organization-specific configuration settings. However, explicit status code values for IS metadata are defined and defaulted, explicitly using "active" and "inactive". However, the ability to accommodate locally mandated status sets and rules is assumed.
 
 In both cases, individual deployments may also use an additional separate curation state (e.g. pending, approved etc.). This is not explicitly covered in this specification since this would be organization specific and often handled by separate workflow tools.
 
@@ -975,10 +975,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Allows for creation of an identity with a supplied set of property values. Uses an identifier supplied by the service consumer which is unique within the Domain for the EntityType. |
 | Precondition |  |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id (optional)  • PolicyDomain Identifier  • PolicyDomain Version Id (optional)  • Identity Instance Identifier  • Status  • Properties (Populated Semantic Signifier) |
-| Outputs | Notifications:  • (Information) Acknowledgement that Identity has been successfully Registered  • (Information) Automated links have been applied (matches found that exceeded the threshold for acceptance as "definite match")  • (Warning) One or more existing Identity records were found that match the input Identifier (based on matching of supplied non-identifier attributes) – return with a list of potentially matching Identifiers. |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id (optional)  ï¿½ PolicyDomain Identifier  ï¿½ PolicyDomain Version Id (optional)  ï¿½ Identity Instance Identifier  ï¿½ Status  ï¿½ Properties (Populated Semantic Signifier) |
+| Outputs | Notifications:  ï¿½ (Information) Acknowledgement that Identity has been successfully Registered  ï¿½ (Information) Automated links have been applied (matches found that exceeded the threshold for acceptance as "definite match")  ï¿½ (Warning) One or more existing Identity records were found that match the input Identifier (based on matching of supplied non-identifier attributes) ï¿½ return with a list of potentially matching Identifiers. |
 | Postconditions | An Identity is Registered |
-| Exception Conditions | • Identity already exists within IS (Identifier must be unique for the Entity Type/PolicyDomain combination)  • Unrecognized PolicyDomain  • Unrecognized Entity Type  • Validation of properties against the schema for the Entity Type/PolicyDomain failed |
+| Exception Conditions | ï¿½ Identity already exists within IS (Identifier must be unique for the Entity Type/PolicyDomain combination)  ï¿½ Unrecognized PolicyDomain  ï¿½ Unrecognized Entity Type  ï¿½ Validation of properties against the schema for the Entity Type/PolicyDomain failed |
 | Miscellaneous  notes/aspects  left to Technical Specification | Although it does not directly affect the interface or parameters, other than the potential output message, IS implementations are expected to provide some level of automated implicit linking capabilities. This could be policy-driven or handled manually using the explicit linking operations described in this specification. This would be triggered when a new entity is created or the properties of an entity updated. The triggered behavior should be as described for the Link Identities operation. Actually, "merging" entities based on automated logic is not encouraged. Note that the actual policies are handled through "out of band" agreements. |
 
 ### Create an Identity
@@ -987,10 +987,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Allows for creation of an Identity Instance with a list of property values, where the Identifier is generated and passed back to the service consumer. Would only be used where the consumer cannot generate and supply its own "local identifiers", although this is an implementation and technical specification choice. This identifier is different from IS Id.  IS Id is an identifier for a Real-World Entity that is guaranteed to be unique across an instance of an IS (i.e. across all Policy Domains covered by the instance). This may be generated by the IS implementation and is only used internally by the Service, although this is an implementation and technical specification choice |
 | Precondition |  |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id(optional)  • PolicyDomain Identifier  • PolicyDomain Version Id (optional)  • Status  • Properties (Populated Semantic Signifier) |
-| Outputs | Return generated Identity Instance Identifier (this is an external "local identifier", not the internal IS Id if and where the latter is implemented).  Notifications:  • (Information) Acknowledgement that Identity has been successfully created  • (Information) Automated links have been applied (matches found that exceeded threshold for acceptance as "definite match")  • (Warning) One or more existing Identity records were found that match the input Identifier (based on matching of supplied non-identifier attributes) – return with list of potentially matching Identifiers. |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id(optional)  ï¿½ PolicyDomain Identifier  ï¿½ PolicyDomain Version Id (optional)  ï¿½ Status  ï¿½ Properties (Populated Semantic Signifier) |
+| Outputs | Return generated Identity Instance Identifier (this is an external "local identifier", not the internal IS Id if and where the latter is implemented).  Notifications:  ï¿½ (Information) Acknowledgement that Identity has been successfully created  ï¿½ (Information) Automated links have been applied (matches found that exceeded threshold for acceptance as "definite match")  ï¿½ (Warning) One or more existing Identity records were found that match the input Identifier (based on matching of supplied non-identifier attributes) ï¿½ return with list of potentially matching Identifiers. |
 | Postconditions | An Identity Instance is created |
-| Exception Conditions | •Unrecognized PolicyDomain  •Unrecognized Entity Type  •Validation of properties against the schema for the Entity Type / PolicyDomain failed |
+| Exception Conditions | ï¿½Unrecognized PolicyDomain  ï¿½Unrecognized Entity Type  ï¿½Validation of properties against the schema for the Entity Type / PolicyDomain failed |
 | Miscellaneous  notes / aspects left to Technical  Specification | As for Register Identity |
 
 ### Update Identity Property Values
@@ -999,11 +999,11 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Allows for addition and/or update of a set of property values for an identity specified by a unique Identifier. |
 | Precondition | The Identity specified by the Identifier exists. |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id(optional)  • PolicyDomain Identifier  • policyDomain Version Id (optional)  • Identity Instance Identifier  • Update Qualifier  • Properties (Populated Semantic Signifier) |
-| Outputs | Notifications:  • (Information) Acknowledgement that property values have been successfully added and/or updated  • (Information) Automated links have been applied (matches found that exceeded the threshold for acceptance as "definite match")  • (Warning) New potential identity match found (based on matching of supplied non-identifier attributes.)  • (Warning) Existing match now questionable |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id(optional)  ï¿½ PolicyDomain Identifier  ï¿½ policyDomain Version Id (optional)  ï¿½ Identity Instance Identifier  ï¿½ Update Qualifier  ï¿½ Properties (Populated Semantic Signifier) |
+| Outputs | Notifications:  ï¿½ (Information) Acknowledgement that property values have been successfully added and/or updated  ï¿½ (Information) Automated links have been applied (matches found that exceeded the threshold for acceptance as "definite match")  ï¿½ (Warning) New potential identity match found (based on matching of supplied non-identifier attributes.)  ï¿½ (Warning) Existing match now questionable |
 | Postconditions | Identity updated with property values |
-| Exception Conditions | • Identity does not exist in the system  • Unrecognized PolicyDomain  • Unrecognized Entity Type  • Validation of properties against the schema for the Entity Type / PolicyDomain failed |
-| Miscellaneous  notes/aspects  left to Technical Specification | Note on automated linking as for Register Identity:  The UpdateQualifier input consists of the following elements:  • **updateMode**:  Indicates the mode to be utilized during the update process.  Values include:  o **OVERWRITE** - Replaces the entire set of data elements with the entire supplied set. Null values in the submitted data will replace existing non-null values.  o **VALUED** - Replaces only those data elements that are valued in the input data. Null values in the submitted data will not replace existing non-null values.  o **UNSPECIFIED** - Implementation specific. ·  • **updateSchemaDefinition**:  a reference to an external resource (e.g. XSL) that can be utilized to extract properties from the supplied Semantic Signifier |
+| Exception Conditions | ï¿½ Identity does not exist in the system  ï¿½ Unrecognized PolicyDomain  ï¿½ Unrecognized Entity Type  ï¿½ Validation of properties against the schema for the Entity Type / PolicyDomain failed |
+| Miscellaneous  notes/aspects  left to Technical Specification | Note on automated linking as for Register Identity:  The UpdateQualifier input consists of the following elements:  ï¿½ **updateMode**:  Indicates the mode to be utilized during the update process.  Values include:  o **OVERWRITE** - Replaces the entire set of data elements with the entire supplied set. Null values in the submitted data will replace existing non-null values.  o **VALUED** - Replaces only those data elements that are valued in the input data. Null values in the submitted data will not replace existing non-null values.  o **UNSPECIFIED** - Implementation specific. ï¿½  ï¿½ **updateSchemaDefinition**:  a reference to an external resource (e.g. XSL) that can be utilized to extract properties from the supplied Semantic Signifier |
 
 ### Update Identity State
 
@@ -1011,23 +1011,23 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Changes the processing "state" of an identity (e.g. to "inactive", "active" or other states to be defined in appropriate semantic profiles). |
 | Precondition | The Identifier identifies an Entity that is an appropriate previous state for the status change. |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id(optional)  • PolicyDomain Identifier  • PolicyDomain Version Id (optional)  • Identity Instance Identifier  • State  • Reason |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id(optional)  ï¿½ PolicyDomain Identifier  ï¿½ PolicyDomain Version Id (optional)  ï¿½ Identity Instance Identifier  ï¿½ State  ï¿½ Reason |
 | Outputs | Confirmation that the Identity identified by the Instance Identifier has changed its recorded state. |
 | Invariants | All identity information is unchanged except for state change |
 | Postconditions | Identity state changed to input state |
-| Exception Conditions | • Identifier is not recognized as identifying an Entity •Unrecognized PolicyDomain  • Unrecognized Entity Type  • Previous state incompatible with requested state change |
+| Exception Conditions | ï¿½ Identifier is not recognized as identifying an Entity ï¿½Unrecognized PolicyDomain  ï¿½ Unrecognized Entity Type  ï¿½ Previous state incompatible with requested state change |
 | Miscellaneous  notes/aspects  left to Technical Specification | Reasons may be codified. This is left to the technical specification.  The simple state model of active and inactive as defined for the HL7 RIM "Entity" is defined as a minimum set of states, whereby "inactive" entities do not show up in normal searches.  However, the definition and meaning of states is seen as something that should be configurable and tailored to individual realms and even for organizations internal use. It also may vary depending on the different Entity Type that is being identified. |
 
 ### Merge Identities
 
 |  |  |
 | --- | --- |
-| Description | Allows merging two identities. The Target Identifier is the "winner" in the merging capability. The deprecated Identity should be automatically set to a pre-configured state (e.g. inactive, but the actual value is semantic profile specific – implementations can default where a more static solution is desired).  Merge capability is restricted to be within a single PolicyDomain only. The Link capability should be used across Domains.  In general, it should also be restricted to identities of the same Entity Type, however implementations may apply this to different Entity Types that represent the same EntityConcept, providing that the semantic signifiers used are compatible.  Identifying attributes in the target that are empty are filled from the source, and existing attributes in the target remain AS-IS.  The implementation must provide a mechanism to indicate that the two identities have been merged (e.g. by use of an explicit link relationship or by using a Correlation set). |
+| Description | Allows merging two identities. The Target Identifier is the "winner" in the merging capability. The deprecated Identity should be automatically set to a pre-configured state (e.g. inactive, but the actual value is semantic profile specific ï¿½ implementations can default where a more static solution is desired).  Merge capability is restricted to be within a single PolicyDomain only. The Link capability should be used across Domains.  In general, it should also be restricted to identities of the same Entity Type, however implementations may apply this to different Entity Types that represent the same EntityConcept, providing that the semantic signifiers used are compatible.  Identifying attributes in the target that are empty are filled from the source, and existing attributes in the target remain AS-IS.  The implementation must provide a mechanism to indicate that the two identities have been merged (e.g. by use of an explicit link relationship or by using a Correlation set). |
 | Precondition | Both Identities to be merged should exist in the system.  Source and Target Identities must be in an allowable state for the merge capability.  Both Identities must be in the same PolicyDomain.  Identities must be classified as EntityTypes that represent the same EntityConcept |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id(optional)  • PolicyDomain Identifier  • PolicyDomain Version Id (optional)  • Target Identity Instance Identifier  • Source Identity Instance Identifier (to be deprecated)  • Reason (optional)  • Link Method (optional)  • Source State (optional)  • Target State (optional - the state in which the target merged identity should be left after the operation) |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id(optional)  ï¿½ PolicyDomain Identifier  ï¿½ PolicyDomain Version Id (optional)  ï¿½ Target Identity Instance Identifier  ï¿½ Source Identity Instance Identifier (to be deprecated)  ï¿½ Reason (optional)  ï¿½ Link Method (optional)  ï¿½ Source State (optional)  ï¿½ Target State (optional - the state in which the target merged identity should be left after the operation) |
 | Outputs | An acknowledgement that the Identities have been merged. |
 | Postconditions | Deprecated Identity set to configured state. Target Identity set to requested state, if entered. |
-| Exception Conditions | • Target Identity does not exist  • Source Identity does not exist  • Unrecognized PolicyDomain  • Unrecognized Entity Type  • Unrecognized Link Method  • Source state not permitted  • Target state not permitted |
+| Exception Conditions | ï¿½ Target Identity does not exist  ï¿½ Source Identity does not exist  ï¿½ Unrecognized PolicyDomain  ï¿½ Unrecognized Entity Type  ï¿½ Unrecognized Link Method  ï¿½ Source state not permitted  ï¿½ Target state not permitted |
 | Miscellaneous  notes/aspects  left to Technical Specification | The mechanism for relating the two identities is left to the technical specification. A link relationship class was identified in the conceptual mode above. Another alternative is to define a "correlation" set, i.e. a separate "master Id" which collects together related identities.  Reasons may be codified. This is left to the technical specification.  If automated implicit linking capabilities are provided, the rules for handling such links must be specified in the implementation.  A default should be used for the target state, so input is optional. |
 
 ### Unmerge Identities
@@ -1036,10 +1036,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Allows unmerging two Identities. This would reinstate a previously deprecated Identity. Note that the state of the unmerged Identities cannot be guaranteed to be valid, and that subsequent manual updates will be required to correct both entries.  Whatever mechanism was used to record the "merge" association between the two identities will be reversed. No other attribute values are updated, merely the states. |
 | Precondition | The Identity resulted from a previous merge. |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id(optional)  • PolicyDomain Identifier  • PolicyDomain Version Id (optional)  • SourceIdentity Instance Identifier  • Target Identity Instance Identifier  • Reason (optional)  • Source Identity State (optional)  • Target Identity State (optional) |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id(optional)  ï¿½ PolicyDomain Identifier  ï¿½ PolicyDomain Version Id (optional)  ï¿½ SourceIdentity Instance Identifier  ï¿½ Target Identity Instance Identifier  ï¿½ Reason (optional)  ï¿½ Source Identity State (optional)  ï¿½ Target Identity State (optional) |
 | Outputs | An acknowledgement that the Identities have been unmerged |
 | Postconditions |  |
-| Exception Conditions | • Identifier is not recognized as identifying an entity  • Supplied identities were not previously merged  • Unrecognized PolicyDomain  • Unrecognized Entity Type  • Source state not permitted  • Target state not permitted |
+| Exception Conditions | ï¿½ Identifier is not recognized as identifying an entity  ï¿½ Supplied identities were not previously merged  ï¿½ Unrecognized PolicyDomain  ï¿½ Unrecognized Entity Type  ï¿½ Source state not permitted  ï¿½ Target state not permitted |
 | Miscellaneous  notes/aspects left to Technical  Specification | From an overall process perspective, the "unmerge" should require manual intervention afterwards. The Technical Specification may enforce an inactive status on unmerged entities until a further update is carried out. This may also be driven by the optional input state parameters.  Reasons may be codified. This is left to the technical specification. |
 
 ### Link Identities
@@ -1048,10 +1048,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Allows linking of two identities. Linking capability can be carried out within a single domain or across two different domains. |
 | Precondition | Both identities to be linked should exist in the system. Target Identity must be in Active state. |
-| Inputs | • Source Entity Type Identifier  • Source Entity Type Version Id(optional)  • Source Policy Domain Identifier  • Source Policy Domain Version Id (optional)  • Source Identity Instance Identifier  • Target Entity Type Identifier  • Target Entity Type Version (optional)  • Target Policy Domain Identifier  • Target Policy Domain Version (optional)  • Target Identity Instance Identifier  • Reason (optional)  • Link Method (optional) |
+| Inputs | ï¿½ Source Entity Type Identifier  ï¿½ Source Entity Type Version Id(optional)  ï¿½ Source Policy Domain Identifier  ï¿½ Source Policy Domain Version Id (optional)  ï¿½ Source Identity Instance Identifier  ï¿½ Target Entity Type Identifier  ï¿½ Target Entity Type Version (optional)  ï¿½ Target Policy Domain Identifier  ï¿½ Target Policy Domain Version (optional)  ï¿½ Target Identity Instance Identifier  ï¿½ Reason (optional)  ï¿½ Link Method (optional) |
 | Outputs | An acknowledgement that the Entities have been linked. |
 | Postconditions | Both Entities updated with link information. |
-| Exception Conditions | • Source Entity does not exist  • Target Entity does not exist  • Unrecognized Entity Types / Policy Domains  • Identities already linked  • Unrecognized Link Method  • Identity states incompatible with link action |
+| Exception Conditions | ï¿½ Source Entity does not exist  ï¿½ Target Entity does not exist  ï¿½ Unrecognized Entity Types / Policy Domains  ï¿½ Identities already linked  ï¿½ Unrecognized Link Method  ï¿½ Identity states incompatible with link action |
 | Miscellaneous  notes/aspects left to Technical  Specification | For cross-Entity-Domain linking, Technical Specifications may choose to allow "peer to peer" linking or enforce that the link is to and from a "Master" Policy Domain for the XIS instance. Note that this does not affect the interface's structure but is an important behavioral aspect.  This capability permits linking of entities of different types; however it is recommended that they map to the same EntityConcept (unlike merge, this is NOT an absolute requirement).  Reasons may be codified. This is left to the technical specification.  Note: this operation could be triggered by implicit logic as part of the register, create or update actions. |
 
 ### Unlink Indentity
@@ -1060,10 +1060,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Allows for the unlinking of two entities. |
 | Precondition | Both Identities to be unlinked should exist in the system and be linked to each other. |
-| Inputs | • Source Entity Type Identifier  • Source Entity Type Version Id(optional)  • Source Policy Domain Identifier  • Source Policy Domain Version Id (optional)  • Source Identity Instance Identifier  • Target Entity Type Identifier  • Target Entity Type Version (optional)  • Target Policy Domain Identifier  • Target Policy Domain Version Id(optional)  • Target Identity Instance Identifier  • Reason |
+| Inputs | ï¿½ Source Entity Type Identifier  ï¿½ Source Entity Type Version Id(optional)  ï¿½ Source Policy Domain Identifier  ï¿½ Source Policy Domain Version Id (optional)  ï¿½ Source Identity Instance Identifier  ï¿½ Target Entity Type Identifier  ï¿½ Target Entity Type Version (optional)  ï¿½ Target Policy Domain Identifier  ï¿½ Target Policy Domain Version Id(optional)  ï¿½ Target Identity Instance Identifier  ï¿½ Reason |
 | Outputs | An acknowledgement that the Identities have been unlinked. |
 | Postconditions |  |
-| Exception Conditions | • Source Entity does not exist  • Target Entity does not exist  • Unrecognized Entity Types / Policy Domains  • Identities not linked  • Identity states incompatible with unlink action |
+| Exception Conditions | ï¿½ Source Entity does not exist  ï¿½ Target Entity does not exist  ï¿½ Unrecognized Entity Types / Policy Domains  ï¿½ Identities not linked  ï¿½ Identity states incompatible with unlink action |
 | Miscellaneous  notes/aspects left to Technical  Specification | Reasons may be codified. This is left to the technical specification. |
 
 ### Remove an Identity Instance
@@ -1072,10 +1072,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Allows for the "complete" removal of an Identity Instance from an IS service. |
 | Precondition | The Identity Instance should exist and should be in an appropriate State The Identity Instance should not be linked to other Entities |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id(optional)  • Policy Domain Identifier  • Policy Domain Version Id(optional)  • Identity Instance Identifier |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id(optional)  ï¿½ Policy Domain Identifier  ï¿½ Policy Domain Version Id(optional)  ï¿½ Identity Instance Identifier |
 | Outputs | An acknowledgement that the Identity Instance has been removed |
 | Postconditions |  |
-| Exception Conditions | • Identifier is not recognized as identifying an Identity Instance  • Identifier identifies an Identity Instance that is not in an allowable state for removal  • The Identity Instance is linked to other Identities |
+| Exception Conditions | ï¿½ Identifier is not recognized as identifying an Identity Instance  ï¿½ Identifier identifies an Identity Instance that is not in an allowable state for removal  ï¿½ The Identity Instance is linked to other Identities |
 | Miscellaneous notes/aspects left to  Technical Specification | Technical Specifications must define whether the Identity Instance Identifier may be reused after this operation, although this is strongly discouraged.  The concept of "removal" implies that identity information is persistently stored within the service's implementation. This may be achieved in many different ways, but this is outside the scope of the interface definition. This functional model assumes that identity instance identifiers cannot be reused, but this must be precisely defined in the technical specifications.  This capability should obviously be used with care and, in general, be restricted to users with specified privileges. |
 
 ## Query Functions
@@ -1086,11 +1086,11 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Retrieves all information for an Identity known by the IS (properties, status, etc.).  A specific unique identifier is input (qualified by PolicyDomain and EntityType). An error is returned if the identifier is not found.  The optional "Return Statuses" parameter may be used to restrict the return only to a specific status. (Implementations may then restrict which user roles may see certain statuses).  If the identity has been merged into another "main" identifier, then a warning message should be returned with the identifier of the identity into which the supplied identifier has been merged. |
 | Precondition |  |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id(optional)  • Policy Domain Identifier  • Policy Domain Version Id (optional)  • Identity Instance Identifier  • Return Statuses (optional) |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id(optional)  ï¿½ Policy Domain Identifier  ï¿½ Policy Domain Version Id (optional)  ï¿½ Identity Instance Identifier  ï¿½ Return Statuses (optional) |
 | Outputs | All property values of the Identity |
 | Invariants | Identity is unchanged. |
 | Postconditions | N/A |
-| Exception Conditions | • Identifier is not recognized as identifying an identity  • Unrecognized Entity Type  • Unrecognized Policy Domain  • Unrecognized Identity states |
+| Exception Conditions | ï¿½ Identifier is not recognized as identifying an identity  ï¿½ Unrecognized Entity Type  ï¿½ Unrecognized Policy Domain  ï¿½ Unrecognized Identity states |
 | Miscellaneous  notes/aspects left to Technical  Specification |  |
 
 ### Find Identities by Property
@@ -1099,10 +1099,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Given a partially populated semantic signifier and other search filter criteria, this allows for a search of matching Identities.  Search qualifiers enable directing the search behavior, but are not explicitly business data content filter criteria  Outputs include a quality of match. |
 | Precondition |  |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id (optional)  • List of 0 or more Policy Domain Ids / Versions Ids (default is "all" and latest versions)  • Search Properties (partially populated Semantic Signifier)  • Return Statuses (optional)  • Search qualifiers (all optional):  - Requested confidence of match  - Maximum Result Set Size  - Error If Size exceeded (flag)  - Matching algorithm |
-| Outputs | •An acknowledgement that a list of Entities for the search predicate has been found or no matches.  •A list of:  - Policy Domain Identifier / Version Id  - Entity Type Identifier / Version Id  - Identity Instance Identifier  - fully populated semantic signifier (Properties).  - quality\_of\_match  matching the search predicate, in order of the quality\_of\_match |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id (optional)  ï¿½ List of 0 or more Policy Domain Ids / Versions Ids (default is "all" and latest versions)  ï¿½ Search Properties (partially populated Semantic Signifier)  ï¿½ Return Statuses (optional)  ï¿½ Search qualifiers (all optional):  - Requested confidence of match  - Maximum Result Set Size  - Error If Size exceeded (flag)  - Matching algorithm |
+| Outputs | ï¿½An acknowledgement that a list of Entities for the search predicate has been found or no matches.  ï¿½A list of:  - Policy Domain Identifier / Version Id  - Entity Type Identifier / Version Id  - Identity Instance Identifier  - fully populated semantic signifier (Properties).  - quality\_of\_match  matching the search predicate, in order of the quality\_of\_match |
 | Postconditions | None |
-| Exception Conditions | • Unrecognized Policy Domain  • Unrecognized Entity Type  • Invalid status values  • Invalid/unrecognized Search Qualifiers  • Validation of properties against the schema for the Entity Type / Policy Domain failed |
+| Exception Conditions | ï¿½ Unrecognized Policy Domain  ï¿½ Unrecognized Entity Type  ï¿½ Invalid status values  ï¿½ Invalid/unrecognized Search Qualifiers  ï¿½ Validation of properties against the schema for the Entity Type / Policy Domain failed |
 | Miscellaneous  notes/aspects  left to Technical Specification | It is left to Technical Specifications whether to define specific queries for specific entity types and property sets, and/or algorithms, etc. For XIS instances, may also be useful to return a list of Policy Domains that were covered and/or not covered by the search.  Consideration can also be given to accepting "ranges" in some of the semantic signifier (Entity Types) fields, e.g. Date of Birth between x and y, but this is not required by the specification. |
 
 ### List Linked Identities
@@ -1111,10 +1111,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | Given an Identifier, list all other entities that are linked to the Identity (optionally constrained within one or more Policy Domains) |
 | Precondition | The Identity exists in the specified domain. |
-| Inputs | • Entity Type Identifier  • Entity Type Version Id(optional)  • Policy Domain Identifier  • Policy Domain Version Id(optional)  • Identity Instance Identifier  • List of other PolicyDomain Identifiers (optional)  • Search Qualifiers (optional) |
+| Inputs | ï¿½ Entity Type Identifier  ï¿½ Entity Type Version Id(optional)  ï¿½ Policy Domain Identifier  ï¿½ Policy Domain Version Id(optional)  ï¿½ Identity Instance Identifier  ï¿½ List of other PolicyDomain Identifiers (optional)  ï¿½ Search Qualifiers (optional) |
 | Outputs | List of Identities (Policy Domain Identifier, Entity Type Identifier, Identity Instance Identifier, fully populated semantic signifier) that are linked to the specified Identity |
 | Postconditions | None |
-| Exception Conditions | • Policy Domain not known to the system •Entity Type not known to the system  • Identity not known to the system  • Search qualifiers not recognized |
+| Exception Conditions | ï¿½ Policy Domain not known to the system ï¿½Entity Type not known to the system  ï¿½ Identity not known to the system  ï¿½ Search qualifiers not recognized |
 | Miscellaneous  notes/aspects left to Technical  Specification | The content of search qualifiers. One example could be enabling filtering based on particular kinds of automated linking. |
 
 ### Request Identity Update Notifications
@@ -1123,10 +1123,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | The service consumer lodges a request to be notified if the IS becomes aware of any changes to information for a specific Identity (properties, status or entity links) or identities of a specific type and/or domain combination.  The input information is validated, and if valid a request identifier is generated and returned. |
 | Precondition | Where entered, Policy Domain and Entity Types are supported. |
-| Inputs | Subscriber identification and/or destination  One or more of:  • Policy Domain Identifier / Version Id  • Entity Type Identifier / Version Id  • Identity Instance Identifier  • Notification Qualifier (identifies specific type of event of interest)  • Request Status |
+| Inputs | Subscriber identification and/or destination  One or more of:  ï¿½ Policy Domain Identifier / Version Id  ï¿½ Entity Type Identifier / Version Id  ï¿½ Identity Instance Identifier  ï¿½ Notification Qualifier (identifies specific type of event of interest)  ï¿½ Request Status |
 | Outputs | Notification Request Identifier |
 | Postconditions |  |
-| Exception Conditions | • Policy Domain not known to the system  • Entity Type not known to the system  • Request Identifier not known to the system  • Identity Identifier not known to the system  • Unrecognized / Invalid Notification Qualifier  • Unrecognized status value |
+| Exception Conditions | ï¿½ Policy Domain not known to the system  ï¿½ Entity Type not known to the system  ï¿½ Request Identifier not known to the system  ï¿½ Identity Identifier not known to the system  ï¿½ Unrecognized / Invalid Notification Qualifier  ï¿½ Unrecognized status value |
 | Miscellaneous  notes/aspects  left to Technical Specification | This is effectively a subscription operation. This could be implemented using a publish-and-subscribe capability. |
 
 ### Update Identity Notification Request
@@ -1135,10 +1135,10 @@ Also, it should be remembered that this is a functional specification. The capab
 | --- | --- |
 | Description | The service consumer provides an update to a previously submitted request to be notified if the IS becomes aware of any changes to information for a specific Identity (properties, status or entity links) or identities of a specific type and/or domain combination. This includes cancellation of the request |
 | Precondition | Where specified, the Identity exists in the specified domain. Where entered, Policy Domain and Entity Types are supported. |
-| Inputs | Notification Request Identifier  Subscriber identification and/or destination  One or more of:  • Policy Domain Identifier / Version Id  • Entity Type Identifier / Version Id  • Identity Instance Identifier  • Notification Qualifier (identifies a specific type of event of interest) |
+| Inputs | Notification Request Identifier  Subscriber identification and/or destination  One or more of:  ï¿½ Policy Domain Identifier / Version Id  ï¿½ Entity Type Identifier / Version Id  ï¿½ Identity Instance Identifier  ï¿½ Notification Qualifier (identifies a specific type of event of interest) |
 | Outputs | Acknowledgement of request.  (Potentially a series of asynchronous update notifications) |
 | Postconditions | Update applied as requested |
-| Exception Conditions | • Policy Domain not known to the system  • Entity Type not known to the system  • Identity not known to the system  • Unrecognized / Invalid Notification Qualifier |
+| Exception Conditions | ï¿½ Policy Domain not known to the system  ï¿½ Entity Type not known to the system  ï¿½ Identity not known to the system  ï¿½ Unrecognized / Invalid Notification Qualifier |
 | Miscellaneous  notes/aspects left to Technical  Specification | This is an update operation on an existing subscription. |
 
 ### Notify Identity Updates
@@ -1167,9 +1167,9 @@ Citation of terms specific to this functional specification
 | Entity | The software representation of a Real-World Entity (RWE). An Entity registered in a IS Instance must have an identifier, so it's frequently referred as an Identity Instance or Identity in this standard |
 | Entity Concept | This specifies a semantic concept or "category of information" that may be supported in an IS. This can be defined at various levels and even customized for a specific organization (subject to interoperability concerns). The purpose of the Entity Concept in IS is to have the capability to specify a semantic relationship between different representations (Entity Types) of the same basic underlying concept. So an Entity Concept can be classified by different Entity Types. |
 | Entity Type | This identifies a specific "type" of entity that an IS supports at the level of a specific information model or schema (aka Semantic Signifier), e.g. RIM Person, RIM Living Subject etc. |
-| Identifier (Id) | A value within a Domain that is associated with an object – an Entity, a Source, etc. - and uniquely identifies it within the scope of a Policy Domain. |
+| Identifier (Id) | A value within a Domain that is associated with an object ï¿½ an Entity, a Source, etc. - and uniquely identifies it within the scope of a Policy Domain. |
 | Identity Instance | Represents the actual instance of an Entity in an IS instance. These are always of a specific EntityType and are scoped within a specific PolicyDomain. |
-| Policy Domain | A ‘Policy Domain' is a set of legal, organizational, ethical, social, psychological, and technical impacts on a system. In our context can be, as an example, a Jurisdictional Domain (e.g. a Local Health Authority)  Within this specification, this identifies a sphere of control of entity identifiers. This could be legal (e.g., government-issued identifiers), organizational (e.g., department, enterprise, cross-enterprise), geographical (e.g., regional, national, state), or even specific to one computer system. This describes the PolicyDomain from a "usage" perspective rather than an "assigning authority" perspective, as is typically used in HL7 for Jurisdictional Domains.  Identities must be unique within a PolicyDomain. |
+| Policy Domain | A ï¿½Policy Domain' is a set of legal, organizational, ethical, social, psychological, and technical impacts on a system. In our context can be, as an example, a Jurisdictional Domain (e.g. a Local Health Authority)  Within this specification, this identifies a sphere of control of entity identifiers. This could be legal (e.g., government-issued identifiers), organizational (e.g., department, enterprise, cross-enterprise), geographical (e.g., regional, national, state), or even specific to one computer system. This describes the PolicyDomain from a "usage" perspective rather than an "assigning authority" perspective, as is typically used in HL7 for Jurisdictional Domains.  Identities must be unique within a PolicyDomain. |
 | MPI / EMPI | (Enterprise) Master Patient Index. An application system that provides capabilities to find and cross-reference patients. MPIs will likely be the most common system for providing IS interfaces. |
 | Property | Aka Trait. This is a characteristic or attribute of an Entity that an IS may use individually or in groups to identify Entities. An example would be "name" for a person. There is no guarantee of uniqueness for individual properties unless they are explicitly defined as the "Identifier". |
 | Real World  Entity (RWE) | Represents an actual thing itself, e.g., the actual Person, the actual Device, etc. Must be noted that this specification takes no position about the physical "reality" of an RWE. So, an RWE can be a result of a relationship or a consequence of a performative utterance, a model, and so on. An RWE can be any identifiable object that an IS instance can manage |
