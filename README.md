@@ -6,7 +6,7 @@ The agents chain is part of the Healthcare Services Reference Model (HSRA) Editi
 
 ## Goals
 
-The new edition takes into account the emerging LLM technology. Two aspects are relevant for our perspective:
+The new HSRA edition takes into account the emerging LLM technology. Two aspects are relevant for our perspective:
 
  - When we talk about AI-assisted software engineering or specification-driven development, we are emphasizing that in an LLM world, structurally, architecture comes before code (spec→arch→code). It may seem obvious, but it has not been the case in the real world until now.
  - Despite the vibing hype: "The reliability of a prompt chain is highly dependent on the integrity of the data passed between steps. If the output of one prompt is ambiguous or poorly formatted, the subsequent prompt may fail due to faulty input. To mitigate this, specifying a structured output format ... this is crucial." (Antonio Gulli, Agentic Design Patterns, Springer, 2025).
@@ -16,11 +16,13 @@ In this context, structured languages are first-class citizens in Agent implemen
 
 The basic idea behind HSRA E2 is that LLMs imply a fundamental reorientation in the way architectures can be built and standards can be used.
 
-The used approach, even if designed independently, is consistent with the so-called Long-Running Agents (Addy Osmani).
+The used approach, even if designed independently, is consistent with the so-called "Long-Running Agents".
 
 The project objective is to realize a chain of orchestrated macro-agents (currently 2 macro-agents with 16 sub-agents). Agents in the chain transform each HL7 Service Functional Model (and, theoretically, other specifications) into formal, computable SysML v2 Models.
 
-The model’s structure follows the classical CIM-PIM-PSM schema derived from MDA (Model Driven Architecture).
+The system is designed for dual use. On the one hand, the models it produces—accessible via the standard SysML v2 APIs and the MCP protocol—serve as a knowledge base for the creation of eHealth architectures. On the other hand, it can support the development of the HL7 FHIR Implementation Guide.
+
+The model’s structure, currently, follows the classical CIM-PIM-PSM schema derived from MDA (Model Driven Architecture).
 However, it must be understood that the mechanics of model transformations are completely different from the classical, deterministic MDA. 
 Here, the logic centers on designing the set of harnesses as a **logical cage** around LLMs.
 
