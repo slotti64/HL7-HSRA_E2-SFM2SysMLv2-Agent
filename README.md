@@ -16,7 +16,7 @@ In this context, structured languages are first-class citizens in Agent implemen
 
 The basic idea behind HSRA E2 is that LLMs imply a fundamental reorientation in the way architectures can be built and standards can be used.
 
-The used approach, even if designed independently, is consistent with the so-called "Long-Running Agents".
+The used approach, even if designed independently, is consistent with the so-called "Long-Running Agents" (see Osmani, A, Long-running Agents, addyosmani.com, 2026, Available: https://addyosmani.com/blog/long-running-agents/).
 
 The project objective is to realize a chain of orchestrated macro-agents (currently 2 macro-agents with 16 sub-agents). Agents in the chain transform each HL7 Service Functional Model (and, theoretically, other specifications) into formal, computable SysML v2 Models.
 
